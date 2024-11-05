@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\8v4ze43kay.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TasksManager.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TasksManager.Client.props",
+      "PackagePath": "build\\TasksManager.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TasksManager.Client.props",
+      "PackagePath": "buildMultiTargeting\\TasksManager.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TasksManager.Client.props",
+      "PackagePath": "buildTransitive\\TasksManager.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TasksManager.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TasksManager.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TasksManager.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TasksManager.props",
+      "PackagePath": "build\\TasksManager.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TasksManager.props",
+      "PackagePath": "buildMultiTargeting\\TasksManager.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TasksManager.props",
+      "PackagePath": "buildTransitive\\TasksManager.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
