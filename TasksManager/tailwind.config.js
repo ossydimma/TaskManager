@@ -6,7 +6,11 @@ module.exports = {
         "./**/*.cshtml",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily : {
+                sans: ['Roboto', 'Arial', 'sans-serif'],
+            }
+        },
     },
     plugins: [],
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SDnqnDinDzZIozWRBUv5HnHbiHZgAM9XfTrnVP/A0c8=",
+  "Hash": "NwKjjy9zoxotfwVl31LrFWe0O3XH36xnQ1COPABBHIc=",
   "Source": "TasksManager",
   "BasePath": "_content/TasksManager",
   "Mode": "Default",
@@ -11,10 +11,10 @@
       "Version": 2,
       "Source": "TasksManager.Client",
       "GetPublishAssetsTargets": "ComputeFilesToPublish;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "_PublishingBlazorWasmProject=true;BuildProjectReferences=false;ResolveAssemblyReferencesFindRelatedSatellites=true;Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishProperties": "_PublishingBlazorWasmProject=true;BuildProjectReferences=false;ResolveAssemblyReferencesFindRelatedSatellites=true",
       "AdditionalPublishPropertiesToRemove": "NoBuild;RuntimeIdentifier;WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildProperties": "",
       "AdditionalBuildPropertiesToRemove": "RuntimeIdentifier;SelfContained;WebPublishProfileFile;TargetFramework"
     }
   ],
@@ -22,7 +22,7 @@
     {
       "Name": "TasksManager\\wwwroot",
       "Source": "TasksManager",
-      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\",
       "BasePath": "_content/TasksManager",
       "Pattern": "**"
     }
@@ -7781,10 +7781,10 @@
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Private.Xml.Linq.wasm"
     },
     {
-      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TasksManager.styles.css",
+      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TasksManager.styles.css",
       "SourceId": "TasksManager",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/TasksManager",
       "RelativePath": "TasksManager.styles.css",
       "AssetKind": "All",
@@ -7797,13 +7797,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TasksManager.styles.css"
+      "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TasksManager.styles.css"
     },
     {
-      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TasksManager.bundle.scp.css",
+      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TasksManager.bundle.scp.css",
       "SourceId": "TasksManager",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/TasksManager",
       "RelativePath": "TasksManager.bundle.scp.css",
       "AssetKind": "All",
@@ -7816,13 +7816,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TasksManager.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TasksManager.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\app.css",
       "SourceId": "TasksManager",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\",
       "BasePath": "_content/TasksManager",
       "RelativePath": "app.css",
       "AssetKind": "All",

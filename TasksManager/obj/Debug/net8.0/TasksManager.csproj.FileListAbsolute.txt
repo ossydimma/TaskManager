@@ -55,3 +55,4 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net8.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net8.0\TasksManager.pdb
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net8.0\TasksManager.genruntimeconfig.cache
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net8.0\ref\TasksManager.dll
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net8.0\TasksManager.sourcelink.json
