@@ -1,0 +1,40 @@
+@page "/signup"
+
+<div class="w-screen h-screen flex justify-center items-center">
+    <div class=" w-[60%] sm:w-[50%] md:w-[40%] lg:w-[28%] rounded-[0.8rem] px-4 py-8 border border-gray-300 font-serif">
+        <h2 class=" text-2xl text-[#5577FF] font-semibold text-center">Sign up</h2>
+        <form action="#" method="post" class="relative flex flex-col gap-3 mt-10">
+            <div class="flex flex-col gap-2">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" class="outline-none border py-1 px-3 rounded-lg"
+                    required />
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="outline-none border py-1 px-3 rounded-lg"
+                    required />
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="outline-none border py-1 px-3 rounded-lg"
+                    required />
+            </div>
+
+            @* <div class="flex flex-col">
+                <label for="password">Password:</label>
+                <input type="@passwordType" id="password" name="password"
+                    class="outline-none border py-1 pl-3 pr-10 rounded-lg" required />
+            </div>
+
+            <div class="flex flex-col">
+                <label for="ConfirmPassword">Confirm Password:</label>
+                <input type="@passwordType" id="ConfirmPassword" name="ConfirmPassword"
+                    class="outline-none border py-1 pl-3 pr-10 rounded-lg" required />
+            </div> *@
+
+        </form>
+    </div>
+
+</div>
