@@ -1,16 +1,56 @@
-﻿@page "/"
+﻿@rendermode RenderMode.InteractiveServer
+@page "/"
 
 <PageTitle>Home</PageTitle>
 <main>
     <div class="bg-[#D0D5DD] w-screen h-screen flex items-center gap-3">
-        <SideBar />
+        <SideBar OnStateChanged="HandleStateChange" />
         <div class=" w-[75%] h-screen">
-           <h1 class="text-red-500 head" >Hello, home!</h1>
-            <p class="text-blue-500 text-3xl" >the blue color</p>
-            <h2 class="text-white">Header</h2> 
+            <h1 class="text-red-500 head">Hello, home!</h1>
+            @if (!Minimize)
+            {
+                <div class=" flex items-center gap-2 ">
+                    <div class="p-2 rounded-lg bg-[#5577FF]">
+                    <svg class="w-4" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: #fff;
+                                    }
+
+                                    .cls-2 {
+                                        fill: none;
+                                    }
+                                </style>
+                            </defs>
+                            <title>logo--tumblr</title>
+                            <path class="cls-1"
+                                d="M22.6,28h-4c-3.59,0-6.3-1.86-6.3-6.3V14.58H9V10.72A7.17,7.17,0,0,0,14.3,4h3.76v6.12h4.36v4.46H18.06v6.2c0,1.86.94,2.49,2.42,2.49H22.6Z">
+                            </path>
+                            <rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="cls-2" width="32"
+                                height="32"></rect>
+                        </g>
+                    </svg>
+                </div>
+                <h2 class=" md:text-[1rem] lg:text-lg font-extrabold">Taskhub</h2>
+                </div>
+                
+            }
+
         </div>
-        
+
     </div>
-    
+
 </main>
 
+@code {
+    private bool Minimize { get; set; } = true;
+
+    private void HandleStateChange(bool state)
+    {
+        Minimize = state;
+    }
+}
