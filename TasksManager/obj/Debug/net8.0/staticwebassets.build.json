@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NwKjjy9zoxotfwVl31LrFWe0O3XH36xnQ1COPABBHIc=",
+  "Hash": "xD+KU7R3N/aw4+WFxwfEeQVmCwX2KP1hww9hGs/wHxo=",
   "Source": "TasksManager",
   "BasePath": "_content/TasksManager",
   "Mode": "Default",
@@ -7836,6 +7836,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\app.css"
+    },
+    {
+      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\Scripts\\interop.js",
+      "SourceId": "TasksManager",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\",
+      "BasePath": "_content/TasksManager",
+      "RelativePath": "Scripts/interop.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Scripts\\interop.js"
     }
   ]
 }

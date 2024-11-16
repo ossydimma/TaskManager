@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\TasksManager.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\Scripts\\interop.js",
+      "PackagePath": "staticwebassets\\Scripts\\interop.js"
+    },
+    {
       "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
