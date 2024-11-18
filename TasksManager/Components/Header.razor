@@ -1,4 +1,9 @@
-<div class="  w-[100%] h-[10vh] py-5 mt-[0.5vh] border flex items-center justify-between">
+@rendermode RenderMode.InteractiveAuto
+@using TasksManager.SharedDataServices
+@inject IJSRuntime JSRuntime
+@inject SharedDataServices.SharedDataService SharedData
+
+<div class="  w-[100%] h-[10vh] py-5 mt-[0.5vh] flex items-center justify-between">
 
     <div class=" flex items-center gap-2 ">
         <div class="p-2 rounded-lg bg-[#5577FF]">
@@ -29,28 +34,6 @@
         <h2 class=" md:text-[1rem] lg:text-lg font-extrabold">Taskhub</h2>
     </div>
 
-    @* <div class=" w-[40%] lg:w-[45%] flex items-center justify-between  px-3.5 border border-gray-600 rounded-3xl">
-                <input type="text" placeholder="Search" class="w-[90%] bg-inherit py-2 outline-none">
-                <svg class="w-7 cursor-pointer " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <g clip-path="url(#clip0_15_152)">
-                            <circle cx="10.5" cy="10.5" r="6.5" stroke="#000000" stroke-linejoin="round"></circle>
-                            <path
-                                d="M19.6464 20.3536C19.8417 20.5488 20.1583 20.5488 20.3536 20.3536C20.5488 20.1583 20.5488 19.8417 20.3536 19.6464L19.6464 20.3536ZM20.3536 19.6464L15.3536 14.6464L14.6464 15.3536L19.6464 20.3536L20.3536 19.6464Z"
-                                fill="#000000"></path>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_15_152">
-                                <rect width="24" height="24" fill="white"></rect>
-                            </clipPath>
-                        </defs>
-                    </g>
-                </svg>
-            </div> *@
-
-
     <div class=" flex items-center gap-3">
         <div class="p-2 rounded-full border-2 border-black">
             <svg class=" w-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,25 +48,63 @@
             </svg>
         </div>
 
-        <div class=" flex items-center justify-center gap-1 stroke-black  border-l-2 border-l-black pl-3 ">
-            <svg class=" w-4 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                    <path
-                        d="M3 9H21M9 15L11 17L15 13M7 3V5M17 3V5M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    </path>
-                </g>
-            </svg>
-            <p class="text-sm">@CurrentDate</p>
-        </div>
+        @if (ShowDate)
+        {
+            <div class=" flex items-center justify-center gap-1 stroke-black  border-l-2 border-l-black pl-3 ">
+                <svg class=" w-4 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M3 9H21M9 15L11 17L15 13M7 3V5M17 3V5M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        </path>
+                    </g>
+                </svg>
+                <p class="text-sm">@CurrentDate</p>
+            </div>
+        }
+
+
     </div>
 
 </div>
 
 
 @code {
-    public string CurrentDate = DateTime.Now.ToString("dddd, MMMM d");
+    private bool ShowDate = true;
+
+    private string CurrentDate = DateTime.Now.ToString("dddd, MMMM d");
+
+    private DotNetObjectReference<Header>? dotNetRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            dotNetRef = DotNetObjectReference.Create(this);
+
+            var screenWidth = await JSRuntime.InvokeAsync<int>("screenHelper.getScreenWidth");
+            UpdateScreenWidth(screenWidth);
+
+            await JSRuntime.InvokeVoidAsync("screenHelper.onResize", dotNetRef);
+        }
+
+
+    }
+
+    [JSInvokable]
+    public void UpdateScreenWidth(int width)
+    {
+        if ( width <= 600 )
+        {
+            ShowDate = false;
+        }
+        else 
+        {
+            ShowDate = true;
+        }
+        StateHasChanged();
+    }
 
 }

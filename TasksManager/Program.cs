@@ -1,6 +1,9 @@
 using TasksManager.Components;
+using TasksManager.SharedDataServices;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<SharedDataService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
