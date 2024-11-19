@@ -193,7 +193,7 @@
         else
         {
             <div class=" w-full fixed bottom-4 bg-[#dadde2]">
-                <ul class="flex justify-between items-center  text-xs xxs:text-sm px-6 xxs:px-8  pt-4 pb-1">
+                <ul class="flex justify-between items-center  text-xs xxs:text-sm px-6 xxs:px-8 pt-2  ">
                     <li class="p-2 rounded-2xl  hover:bg-black">
                         <NavLink href="/" class=" hover:text-white fill-black hover:fill-white">
                             <svg class="w-5 xxs:w-6 mx-auto mb-1 " viewBox="0 0 1920 1920"
@@ -307,7 +307,7 @@
 @code {
     [Parameter]
     public EventCallback<bool> OnStateChanged { get; set; }
-    private bool ShowSideBar { get; set; } = true;
+    private bool ShowSideBar { get; set; } 
     private DotNetObjectReference<SideBar>? dotNetRef;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -328,15 +328,6 @@
     [JSInvokable]
     public void UpdateScreenWidth(int width)
     {
-        if (width <= 600)
-        {
-            ShowSideBar = false;
-        }
-        else
-        {
-            ShowSideBar = true;
-        }
-
         if (width <= 815)
         {
             SharedData.MaximizeSideBar = false;
@@ -346,6 +337,15 @@
             SharedData.MaximizeSideBar = true;
         }
         SharedData.Onchange += StateHasChanged;
+        
+        if (width <= 600)
+        {
+            ShowSideBar = false;
+        }
+        else
+        {
+            ShowSideBar = true;
+        }
 
         StateHasChanged();
     }

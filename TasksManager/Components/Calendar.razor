@@ -1,0 +1,66 @@
+
+
+
+<div >
+
+    <div class="  grid grid-cols-7 gap-2 text-center">
+        @foreach(string day in new[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" })
+        {
+            <div class="font-bold text-gray-600 ">@day</div>
+        }
+    </div>
+
+    
+    <div class=" grid grid-cols-7 gap-2 text-center">
+        @foreach(DateTime date in GetCalendar())
+        {
+            <div class="@GetDateClasses(date) p-1">
+                @date.Day
+            </div>
+        }
+    </div>
+
+    
+</div>
+
+@code {
+    private DateTime CurrentDate = DateTime.Now;
+    private DateTime FirstDayOfMonth;
+    private int DaysInMonth;
+
+    protected override void OnInitialized()
+    {
+        FirstDayOfMonth = new DateTime(CurrentDate.Year, CurrentDate.Month, 1);
+        DaysInMonth = DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month);
+    }
+
+    private IEnumerable<DateTime> GetCalendar()
+    {
+        DateTime start = FirstDayOfMonth.AddDays(-(int)FirstDayOfMonth.DayOfWeek);
+
+        for (int i = 0; i < 42; i++)
+        {
+            yield return start.AddDays(i);
+        }
+    }
+
+    private bool IsToday(DateTime date) => date.Date == CurrentDate.Date;
+    private bool IsCurrentMonth(DateTime date) => date.Month == CurrentDate.Month;
+
+    private string GetDateClasses(DateTime date)
+    {
+        string classes = string.Empty;
+
+        if (IsToday(date)) 
+        {
+            classes += "bg-[#3b82f6] text-white font-bold rounded-full";
+        }
+        else if (!IsCurrentMonth(date)) 
+        {
+            classes += "text-[#9ca3af]";
+        }
+
+        return classes;
+    }
+
+}
