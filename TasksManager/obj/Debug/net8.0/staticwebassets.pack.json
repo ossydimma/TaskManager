@@ -1,15 +1,15 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TasksManager.bundle.scp.css",
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TasksManager.bundle.scp.css",
       "PackagePath": "staticwebassets\\TasksManager.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\Scripts\\interop.js",
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\wwwroot\\Scripts\\interop.js",
       "PackagePath": "staticwebassets\\Scripts\\interop.js"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\wwwroot\\app.css",
+      "Id": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {

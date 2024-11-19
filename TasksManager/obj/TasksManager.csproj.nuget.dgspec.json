@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\TasksManager.csproj": {}
+    "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\TasksManager.csproj": {}
   },
   "projects": {
     "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\TasksManager.Client.csproj": {
@@ -87,14 +87,14 @@
         }
       }
     },
-    "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\TasksManager.csproj": {
+    "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\TasksManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\TasksManager.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\TasksManager.csproj",
         "projectName": "TasksManager",
-        "projectPath": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\TasksManager.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\TasksManager.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksmanager\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\tasksManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

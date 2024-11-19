@@ -621,10 +621,6 @@ video {
   margin-top: 2.5rem;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -633,8 +629,8 @@ video {
   margin-top: 0.5vh;
 }
 
-.mt-\[2vh\] {
-  margin-top: 2vh;
+.mt-\[1\.5vh\] {
+  margin-top: 1.5vh;
 }
 
 .flex {
@@ -659,6 +655,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[98Vh\] {
+  height: 98Vh;
 }
 
 .w-10 {
@@ -785,10 +785,6 @@ video {
   gap: 1.75rem;
 }
 
-.gap-5 {
-  gap: 1.25rem;
-}
-
 .rounded-2xl {
   border-radius: 1rem;
 }
@@ -858,9 +854,9 @@ video {
   border-left-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
-.bg-\[\#3b82f6\] {
+.bg-\[\#000\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#5577FF\] {
@@ -876,6 +872,11 @@ video {
 .bg-\[\#f6f5f5\] {
   --tw-bg-opacity: 1;
   background-color: rgb(246 245 245 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#fff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-gray-300 {
@@ -901,8 +902,16 @@ video {
   fill: #000;
 }
 
+.fill-white {
+  fill: #fff;
+}
+
 .stroke-black {
   stroke: #000;
+}
+
+.p-0\.5 {
+  padding: 0.125rem;
 }
 
 .p-2 {
@@ -911,10 +920,6 @@ video {
 
 .p-3 {
   padding: 0.75rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
 }
 
 .px-3 {
@@ -947,6 +952,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -955,6 +965,11 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .pb-3 {
@@ -1059,9 +1074,9 @@ video {
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
-.text-gray-600 {
+.text-black {
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1082,6 +1097,15 @@ video {
 .hover\:bg-black:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:fill-black:hover {
+  fill: #000;
 }
 
 .hover\:fill-white:hover {
@@ -1132,6 +1156,11 @@ video {
   .sm\:my-\[2vh\] {
     margin-top: 2vh;
     margin-bottom: 2vh;
+  }
+
+  .sm\:my-\[1vh\] {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
   }
 
   .sm\:ml-\[0\.5vh\] {
@@ -1192,6 +1221,11 @@ video {
   .md\:px-2 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .md\:pr-3 {

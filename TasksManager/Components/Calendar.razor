@@ -1,37 +1,80 @@
+@rendermode RenderMode.InteractiveServer
 
+<div class="bg-[#000] py-3 px-6 rounded-2xl">
 
+    <div class=" flex justify-between text-white mb-3 font-medium">
+        <div class="cursor-pointer fill-white hover:fill-black hover:bg-white p-2 rounded-full" @onclick="GetPrevMonth">
+            <svg class="w-4 " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.006 512.006" xml:space="preserve">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <g>
+                        <g>
+                            <path
+                                d="M388.419,475.59L168.834,256.005L388.418,36.421c8.341-8.341,8.341-21.824,0-30.165s-21.824-8.341-30.165,0 L123.586,240.923c-8.341,8.341-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251 c5.461,0,10.923-2.091,15.083-6.251C396.76,497.414,396.76,483.931,388.419,475.59z">
+                            </path>
+                        </g>
+                    </g>
+                </g>
+            </svg> 
+        </div>
 
-<div >
+        <p>@CurrentDate</p>
+        <div class="cursor-pointer fill-white hover:fill-black hover:bg-white p-2 rounded-full" @onclick="GetNextMonth">
+            <svg class="w-4 " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.005 512.005" xml:space="preserve">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <g>
+                        <g>
+                            <path
+                                d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z">
+                            </path>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
+        
+    </div>
 
     <div class="  grid grid-cols-7 gap-2 text-center">
-        @foreach(string day in new[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" })
+        @foreach (string day in new[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" })
         {
-            <div class="font-bold text-gray-600 ">@day</div>
+            <div class="font-bold text-white ">@day</div>
         }
     </div>
 
-    
+
     <div class=" grid grid-cols-7 gap-2 text-center">
-        @foreach(DateTime date in GetCalendar())
+        @foreach (DateTime date in GetCalendar())
         {
-            <div class="@GetDateClasses(date) p-1">
+            <div class="@GetDateClasses(date) p-0.5">
                 @date.Day
             </div>
         }
     </div>
 
-    
+
 </div>
 
 @code {
-    private DateTime CurrentDate = DateTime.Now;
+    private int CurrentMonth = DateTime.Now.Month;
+    private int CurrentYear = DateTime.Now.Year;
+
     private DateTime FirstDayOfMonth;
     private int DaysInMonth;
 
+    private string CurrentDate =  string.Empty; 
+
     protected override void OnInitialized()
     {
-        FirstDayOfMonth = new DateTime(CurrentDate.Year, CurrentDate.Month, 1);
-        DaysInMonth = DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month);
+        CurrentDate = new DateTime(CurrentYear, CurrentMonth, 1).ToString("MMMM yyyy");
+        
+        FirstDayOfMonth = new DateTime(CurrentYear, CurrentMonth, 1);
+        DaysInMonth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
     }
 
     private IEnumerable<DateTime> GetCalendar()
@@ -44,20 +87,66 @@
         }
     }
 
-    private bool IsToday(DateTime date) => date.Date == CurrentDate.Date;
-    private bool IsCurrentMonth(DateTime date) => date.Month == CurrentDate.Month;
+    private void GetNextMonth()
+    {
+        
+        if (CurrentMonth >= 12)
+        {
+            CurrentYear += 1;
+            CurrentMonth = 1;
+        }
+        else 
+        {
+            CurrentMonth += 1;
+        }
+
+        CurrentDate = new DateTime(CurrentYear, CurrentMonth, 1).ToString("MMMM yyyy");
+
+        FirstDayOfMonth = new DateTime(CurrentYear, CurrentMonth, 1);
+        DaysInMonth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
+
+        StateHasChanged();
+        Console.WriteLine($"Current Year : {CurrentYear}, Current Month : {CurrentMonth}");
+    }
+    private void GetPrevMonth()
+    {
+        if (CurrentMonth <= 1)
+        {
+            CurrentYear -= 1;
+            CurrentMonth = 12;
+        }
+        else 
+        {
+            CurrentMonth -= 1;
+        }
+
+        CurrentDate = new DateTime(CurrentYear, CurrentMonth, 1).ToString("MMMM yyyy");
+
+        FirstDayOfMonth = new DateTime(CurrentYear, CurrentMonth, 1);
+        DaysInMonth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
+
+        StateHasChanged();
+        Console.WriteLine($"Current Year : {CurrentYear}, Current Month : {CurrentMonth}");
+    }
+
+    private bool IsToday(DateTime date) => date.Date == DateTime.Now.Date;
+    private bool IsCurrentMonth(DateTime date) => date.Month == CurrentMonth;
 
     private string GetDateClasses(DateTime date)
     {
         string classes = string.Empty;
 
-        if (IsToday(date)) 
+        if (IsToday(date))
         {
-            classes += "bg-[#3b82f6] text-white font-bold rounded-full";
+            classes = "bg-[#fff] text-black font-bold rounded-full";
         }
-        else if (!IsCurrentMonth(date)) 
+        else if (IsCurrentMonth(date))
         {
-            classes += "text-[#9ca3af]";
+            classes = " text-white";
+        }
+        else if (!IsCurrentMonth(date))
+        {
+            classes = "text-[#9ca3af]";
         }
 
         return classes;
