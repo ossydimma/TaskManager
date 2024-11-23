@@ -1,0 +1,149 @@
+@rendermode RenderMode.InteractiveServer
+@using System.Diagnostics
+
+<div class="bg-black text-white text-center mt-3 h-[12rem] rounded-3xl py-4">
+    <div class=" flex flex-col gap-4">
+        <h2 class="font-bold text-xl font-serif">Time Tracker</h2>
+
+        <div class=" text-xl flex items-center justify-center gap-4">
+            <div class="flex ">
+                <div class=" flex flex-col items-center font-mono">
+                    <p class=" font-semibold text-2xl">@($"{Hours:D2}")</p>
+                    <p class="text-sm text-center">Hours</p>
+                </div>
+                <span class="text-center ml-4">:</span>
+            </div>
+
+            <div class="flex ">
+                <div class=" flex flex-col items-center font-mono">
+                    <p class=" font-semibold text-2xl">@($"{Minutes:D2}")</p>
+                    <p class="text-sm text-center">Minutes</p>
+                </div>
+                <span class="text-center ml-4">:</span>
+            </div>
+
+
+            <div class=" flex flex-col items-center font-mono">
+                <p class=" font-semibold text-2xl">@($"{Seconds:D2}")</p>
+                <p class="text-sm text-center">Seconds</p>
+            </div>
+
+        </div>
+
+        <div class=" flex items-center justify-center gap-4">
+            @* ------------- PAUSE ------------ *@
+            @* <button class=" bg-orange-600 text-white p-3 rounded-full cursor-pointer" @onclick="()=>{
+                if (IsRunning)
+                {
+                    stopwatch.Stop();
+                    IsRunning = false;
+                }
+            }">
+                <svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M2 6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2C7.88562 2 8.82843 2 9.41421 2.58579C10 3.17157 10 4.11438 10 6V18C10 19.8856 10 20.8284 9.41421 21.4142C8.82843 22 7.88562 22 6 22C4.11438 22 3.17157 22 2.58579 21.4142C2 20.8284 2 19.8856 2 18V6Z"
+                            fill="#fff"></path>
+                        <path
+                            d="M14 6C14 4.11438 14 3.17157 14.5858 2.58579C15.1716 2 16.1144 2 18 2C19.8856 2 20.8284 2 21.4142 2.58579C22 3.17157 22 4.11438 22 6V18C22 19.8856 22 20.8284 21.4142 21.4142C20.8284 22 19.8856 22 18 22C16.1144 22 15.1716 22 14.5858 21.4142C14 20.8284 14 19.8856 14 18V6Z"
+                            fill="#fff"></path>
+                    </g>
+                </svg>
+            </button> *@
+            @if (!IsRunning)
+            {
+                 @* ------------- START ------------ *@
+                <button class=" bg-green-600 text-white p-3 rounded-full cursor-pointer" @onclick="StartStopWatch">
+                    <svg class="w-4" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M5 16L7 16L15 8L7 -2.7818e-08L5 0L5 16Z" fill="#fff"></path>
+                        </g>
+                    </svg>
+                </button>
+            }
+            else
+            {
+                 @* ------------- STOP ------------ *@
+                <button class=" bg-red-600 text-white p-3 rounded-full cursor-pointer" @onclick="EndStopWatch">
+                    <div class="w-4 h-4 rounded-sm bg-white"></div>
+                </button>
+
+                @* ------------- RESET ------------ *@
+                <button class=" bg-orange-600 text-white p-3 rounded-full cursor-pointer" @onclick="ResetStopWatch">
+                    <svg class="w-4" viewBox="0 0 24.00 24.00" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                            stroke-width="0.048"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g clip-path="url(#clip0_429_11071)">
+                                <path
+                                    d="M12 2.99982C16.9706 2.99982 21 7.02925 21 11.9998C21 16.9704 16.9706 20.9998 12 20.9998C7.02944 20.9998 3 16.9704 3 11.9998C3 9.17255 4.30367 6.64977 6.34267 4.99982"
+                                    stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M3 4.49982H7V8.49982" stroke="#fff" stroke-width="2.4" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_429_11071">
+                                    <rect width="24" height="24" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </g>
+                    </svg>
+                </button>
+            }
+           
+
+           
+        </div>
+    </div>
+
+</div>
+
+@code {
+
+    private bool IsRunning = false;
+    private Stopwatch stopwatch = new();
+    private int Seconds => stopwatch.Elapsed.Seconds;
+    private int Minutes => stopwatch.Elapsed.Minutes;
+    private int Hours => stopwatch.Elapsed.Hours;
+
+    private async Task StartStopWatch() 
+    {
+        if(!IsRunning) 
+        {
+            IsRunning = true;
+            stopwatch.Start();
+
+            while(IsRunning) 
+            {
+                StateHasChanged(); // Refresh UI
+                await Task.Delay(100); // Update every 100ms
+            }
+
+        }
+       
+    }
+
+    private void EndStopWatch()
+    {
+        if (IsRunning)
+        {
+            stopwatch.Stop();
+            IsRunning = false;
+        }
+    }
+
+    private void ResetStopWatch()
+    {
+        if (IsRunning)
+        {
+            stopwatch.Reset();
+            IsRunning = false;
+        }
+    }
+}

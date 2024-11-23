@@ -62,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaWRlQmFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksManager/Components/TimeTracker.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUaW1lVHJhY2tlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksManager/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

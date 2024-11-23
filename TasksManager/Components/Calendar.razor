@@ -1,6 +1,6 @@
 @rendermode RenderMode.InteractiveServer
 
-<div class="bg-[#000] py-3 px-6 rounded-2xl">
+<div class="bg-[#000] py-3 px-4 rounded-2xl">
 
     <div class=" flex justify-between text-white mb-3 font-medium">
         <div class="cursor-pointer fill-white hover:fill-black hover:bg-white p-2 rounded-full" @onclick="GetPrevMonth">
@@ -72,7 +72,7 @@
     protected override void OnInitialized()
     {
         CurrentDate = new DateTime(CurrentYear, CurrentMonth, 1).ToString("MMMM yyyy");
-        
+
         FirstDayOfMonth = new DateTime(CurrentYear, CurrentMonth, 1);
         DaysInMonth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
     }
