@@ -1,8 +1,8 @@
 @rendermode RenderMode.InteractiveServer
 
-<div class="bg-[#000] py-3 px-4 rounded-2xl">
+<div class="bg-[#000]  py-3 px-4 rounded-2xl">
 
-    <div class=" flex justify-between text-white mb-3 font-medium">
+    <div class=" flex justify-between items-center text-white mb-3 font-medium">
         <div class="cursor-pointer fill-white hover:fill-black hover:bg-white p-2 rounded-full" @onclick="GetPrevMonth">
             <svg class="w-4 " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.006 512.006" xml:space="preserve">
@@ -43,7 +43,7 @@
     <div class="  grid grid-cols-7 gap-2 text-center">
         @foreach (string day in new[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" })
         {
-            <div class="font-bold text-white ">@day</div>
+            <div class="font-bold text-white py-0.5 px-1">@day</div>
         }
     </div>
 
@@ -51,7 +51,7 @@
     <div class=" grid grid-cols-7 gap-2 text-center">
         @foreach (DateTime date in GetCalendar())
         {
-            <div class="@GetDateClasses(date) p-0.5">
+            <div class="@GetDateClasses(date) py-0.5 px-1">
                 @date.Day
             </div>
         }
@@ -106,7 +106,6 @@
         DaysInMonth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
 
         StateHasChanged();
-        Console.WriteLine($"Current Year : {CurrentYear}, Current Month : {CurrentMonth}");
     }
     private void GetPrevMonth()
     {
@@ -126,7 +125,6 @@
         DaysInMonth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
 
         StateHasChanged();
-        Console.WriteLine($"Current Year : {CurrentYear}, Current Month : {CurrentMonth}");
     }
 
     private bool IsToday(DateTime date) => date.Date == DateTime.Now.Date;

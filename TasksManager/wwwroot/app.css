@@ -570,8 +570,8 @@ video {
   position: relative;
 }
 
-.bottom-4 {
-  bottom: 1rem;
+.bottom-0 {
+  bottom: 0px;
 }
 
 .right-4 {
@@ -609,6 +609,10 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.mb-\[5rem\] {
+  margin-bottom: 5rem;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -639,6 +643,10 @@ video {
 
 .mt-\[1\.5vh\] {
   margin-top: 1.5vh;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .flex {
@@ -673,12 +681,12 @@ video {
   height: 98Vh;
 }
 
-.h-screen {
-  height: 100vh;
-}
-
 .h-auto {
   height: auto;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .w-10 {
@@ -807,6 +815,14 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .rounded-2xl {
@@ -1020,6 +1036,26 @@ video {
   padding-bottom: 2rem;
 }
 
+.px-0\.5 {
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+}
+
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -1215,6 +1251,10 @@ video {
     margin-bottom: 2vh;
   }
 
+  .sm\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
   .sm\:ml-\[0\.5vh\] {
     margin-left: 0.5vh;
   }
@@ -1246,6 +1286,10 @@ video {
 }
 
 @media (min-width: 815px) {
+  .md\:mb-0 {
+    margin-bottom: 0px;
+  }
+
   .md\:h-screen {
     height: 100vh;
   }
@@ -1256,6 +1300,10 @@ video {
 
   .md\:w-7 {
     width: 1.75rem;
+  }
+
+  .md\:w-\[35\%\] {
+    width: 35%;
   }
 
   .md\:w-\[40\%\] {
@@ -1270,12 +1318,24 @@ video {
     width: 65%;
   }
 
-  .md\:flex-row {
-    flex-direction: row;
+  .md\:w-\[6\%\] {
+    width: 6%;
   }
 
-  .md\:gap-0 {
-    gap: 0px;
+  .md\:w-\[68\%\] {
+    width: 68%;
+  }
+
+  .md\:w-\[3\%\] {
+    width: 3%;
+  }
+
+  .md\:w-\[32\%\] {
+    width: 32%;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
   }
 
   .md\:gap-3 {
@@ -1284,6 +1344,22 @@ video {
 
   .md\:gap-4 {
     gap: 1rem;
+  }
+
+  .md\:gap-6 {
+    gap: 1.5rem;
+  }
+
+  .md\:gap-0 {
+    gap: 0px;
+  }
+
+  .md\:gap-1 {
+    gap: 0.25rem;
+  }
+
+  .md\:overflow-hidden {
+    overflow: hidden;
   }
 
   .md\:px-2 {
