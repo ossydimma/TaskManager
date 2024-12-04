@@ -11,8 +11,7 @@
         <div class="bg-[#f6f5f5] h-[98Vh] overflow-x-hidden overflow-y-scroll md:overflow-hidden my-0 sm:my-[1vh] px-3 w-screen sm:rounded-[2rem]">
             <Header />
             <div>
-                <div class=" flex  justify-center items-center mt-1">
-                    @* <h1 class=" text-xl font-medium">Hello Ositadimma</h1> *@
+                <div class=" flex  justify-center items-center ">
                     <div
                         class=" w-[80%] md:w-[50%] lg:w-[45%] flex items-center justify-between  px-3.5 border border-gray-600 rounded-3xl">
                         <input type="text" placeholder="Search" class="w-[90%] bg-inherit py-2 outline-none">
@@ -38,8 +37,8 @@
                     </div>
 
                 </div>
-                <div class=" flex flex-col gap-8 md:gap-1 md:flex-row mt-[1.5vh] ">
-                    <section class=" border w-[100%] md:w-[65%] ">
+                <div class=" flex justify-between flex-col gap-8 md:gap-2 md:flex-row mt-[2.5vh] ">
+                    <section class="  w-[100%] md:w-[65%] md:mx-8">
                         @* ------------ LEFT CONTENT ---------------- *@
                         <div class=" flex flex-wrap gap-2 md:gap-4 justify-between items-center text-xs xs:text-sm ">
 
@@ -59,10 +58,41 @@
                             </div>
         
                         </div>
+
+                        <div class="mt-8 mx-2 md:mx-8"> 
+                            <div class="flex justify-between items-center  mb-4 font-serif">
+                                <h2 class="font-bold text-2xl">Today's Task</h2>
+                                <p class=" text-right text-lg font-medium cursor-pointer">view all</p>
+                            </div>
+
+                            <div class=" flex flex-col gap-4  ">
+                                <div class="pt-7 px-6 shadow-lg border-t-2">
+                                    <p class=" font-semibold text-lg">Landing PageTitle Agency Creative</p>
+                                    <p class="text-sm font-medium mb-2">work project</p>
+
+                                    <div class="flex items-center justify-between  border-t-2 py-4">
+                                        <p class="font-semibold">10:00 - 12:30 am</p>
+                                        <div class="px-4 py-2 rounded-xl text-white bg-black">On Progress</div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-7 px-6 shadow-lg border-t-2">
+                                    <p class=" font-semibold text-lg">Landing PageTitle Agency Creative</p>
+                                    <p class="text-sm font-medium mb-2">personal project</p>
+
+                                    <div class="flex items-center justify-between  border-t-2 py-4">
+                                        <p class="font-semibold">10:00 - 12:30 am</p>
+                                        <div class="px-4 py-2 rounded-xl text-white bg-black">Completed</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
                     </section>
 
                     @* ------------ RIGHT CONTENT ---------------- *@
-                    <section class="border w-[100%] md:w-[35%]">
+                    <section class="w-[100%] md:w-[33%]">
                         <Calendar />
                         <TimeTracker />
                     </section>
