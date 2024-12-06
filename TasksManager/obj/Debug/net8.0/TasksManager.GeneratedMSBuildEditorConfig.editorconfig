@@ -26,6 +26,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYWxlbmRhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksManager/Components/CreateTask.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDcmVhdGVUYXNrLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksManager/Components/EyeIcon.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xFeWVJY29uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
