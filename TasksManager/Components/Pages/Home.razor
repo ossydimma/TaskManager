@@ -2,13 +2,15 @@
 @* @rendermode RenderMode.InteractiveServer *@
 @using TasksManager.SharedDataServices
 @inject SharedDataServices.SharedDataService SharedData
+@implements IDisposable
 
 <PageTitle>Home</PageTitle>
 
-<div class=" @( showCreateTask ? "pointer-events-none opacity-65" : " pointer-events-auto opacity-1")">
-    <div class=" flex  justify-center items-center ">
+<div class=" @( SharedData.ShowCreateTask ? "pointer-events-none opacity-50" : " pointer-events-auto opacity-1")">
+    
+    <div class=" flex justify-center items-center border-gray-500 border-b-2 pb-[2vh] pt-[-2vh]">
         <div
-            class=" w-[80%] md:w-[50%] lg:w-[45%] flex items-center justify-between  px-3.5 border border-gray-600 rounded-3xl">
+            class=" w-[80%] md:w-[50%] lg:w-[45%] flex sm:hidden items-center justify-between  px-3.5 border border-gray-600 rounded-3xl  ">
             <input type="text" placeholder="Search" class="w-[90%] bg-inherit py-2 outline-none">
             <svg class="w-7 cursor-pointer " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -31,7 +33,7 @@
         </div>
 
     </div>
-    <div class=" flex justify-between flex-col gap-8 md:gap-2 md:flex-row mt-[2.5vh] ">
+    <div class=" flex justify-between flex-col gap-8 md:gap-2 md:flex-row mt-[2.5vh] sm:mt-[3.5vh]  px-3">
         <section class="  w-[100%] md:w-[65%] md:mx-8">
             @* ------------ LEFT CONTENT ---------------- *@
             <div class=" flex flex-wrap gap-2 md:gap-4 justify-between items-center text-xs xs:text-sm ">
@@ -96,32 +98,17 @@
 </div>
 
 
-
-
-@* <main>
-    <div class="bg-[#dadde2] w-screen h-auto md:h-screen pr-0 md:pr-3 sm:pr-1 flex gap-0 sm:gap-1 md:gap-3">
-        <SideBar OnStateChanged="HandleStateChange" ShowCreateTask="@showCreateTask" ShowCreateTaskChanged="@HandleCreateTaskChanged" />
-
-
-    </div>
-
-</main> *@
-
 @code {
-    private bool showCreateTask = false;
     private bool ShowSearchBox { get; set; }
     public string CurrentDate = DateTime.Now.ToString("dddd, MMMM d");
 
-    private void HandleCreateTaskChanged(bool newValue)
+    protected override void OnInitialized()
     {
-        showCreateTask = newValue;
-        StateHasChanged();
+        SharedData.OnChange += StateHasChanged;
     }
 
-
-    private void HandleStateChange(bool state)
+    public void Dispose()
     {
-        @* Minimize = state; *@
-        StateHasChanged();
+        SharedData.OnChange -= StateHasChanged;
     }
 }
