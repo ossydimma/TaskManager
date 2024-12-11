@@ -615,6 +615,7 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.AssemblyInfo.cs
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.sourcelink.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Authorization.wasm
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.wasm
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Forms.wasm
@@ -1026,4 +1027,3 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\refint\TasksManager.Client.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.pdb
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\ref\TasksManager.Client.dll
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.sourcelink.json

@@ -4,20 +4,22 @@ namespace TasksManager.SharedDataServices
 {
     public class SharedDataService
     {
-        private bool _showCreateTsk;
-        public bool MaximizeSideBar {get; set;} = true;
-        public bool ShowCreateTask {
-            get => _showCreateTsk;
-             set 
-             {
-                if (_showCreateTsk != value)
+        private bool _showCreateTask;
+        public bool MaximizeSideBar { get; set; } = true;
+        public bool ShowCreateTask
+        {
+            get => _showCreateTask;
+            set
+            {
+                if (_showCreateTask != value)
                 {
-                    _showCreateTsk = value;
+                    _showCreateTask = value;
                     NotifyStateChanged();
                 }
-             }}
+            }
+        }
 
         public event Action? OnChange;
-        private void NotifyStateChanged () => OnChange?.Invoke();
+        public void NotifyStateChanged() => OnChange?.Invoke();
     }
 }

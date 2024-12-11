@@ -13,6 +13,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddServerSideBlazor()
     .AddCircuitOptions(options => options.DetailedErrors = true);
     
+    
 
 var app = builder.Build();
 

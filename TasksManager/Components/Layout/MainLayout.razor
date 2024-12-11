@@ -1,9 +1,26 @@
-﻿@inherits LayoutComponentBase
+﻿@* @rendermode RenderMode.InteractiveAuto *@
+@inherits LayoutComponentBase
 
-@Body
+<div class="bg-[#dadde2] w-screen h-auto md:h-screen pr-0 md:pr-3 sm:pr-1 flex gap-0 sm:gap-1 md:gap-3">
+    <SideBar />
+    <div class="relative bg-[#f6f5f5] h-[98Vh] overflow-x-hidden overflow-y-scroll md:overflow-hidden my-0 sm:my-[1vh] px-3 w-screen sm:rounded-[2rem] opacity-">
+        <Header />
+         @Body    
+        <CreateTask />
+    </div>
+</div>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    @* private bool showCreateTask = false;
+    private void HandleCreateTaskChanged (bool newValue)
+    {
+        showCreateTask = newValue;
+        StateHasChanged();
+    } *@
+}

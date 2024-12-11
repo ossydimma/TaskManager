@@ -1,0 +1,45 @@
+@page "/mytasks"
+@* @rendermode RenderMode.InteractiveAuto *@
+
+<main>
+    <div class="flex justify-between items-center px-10">
+        <h1 class="font-bold font-serif text-2xl">My Tasks</h1>
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 border rounded-md p-2 border-gray-600 cursor-pointer hover:bg-black hover:text-white stroke-black hover:stroke-white">
+                <svg class="w-5 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <g clip-path="url(#clip0_15_152)">
+                            <circle cx="10.5" cy="10.5" r="6.5"  stroke-linejoin="round">
+                            </circle>
+                            <path
+                                d="M19.6464 20.3536C19.8417 20.5488 20.1583 20.5488 20.3536 20.3536C20.5488 20.1583 20.5488 19.8417 20.3536 19.6464L19.6464 20.3536ZM20.3536 19.6464L15.3536 14.6464L14.6464 15.3536L19.6464 20.3536L20.3536 19.6464Z"
+                                fill="#000000"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_15_152">
+                                <rect width="24" height="24" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </g>
+                </svg>
+                Search...
+                @* <input type="text" name="" id="" placeholder="Search..." class="py-2 w-28 " > *@
+            </div>
+            <div class=" border border-gray-600 rounded-md py-2 px-4 flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white stroke-black hover:stroke-white">
+                <svg class="w-6" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M22 3.58002H2C1.99912 5.28492 2.43416 6.96173 3.26376 8.45117C4.09337 9.94062 5.29 11.1932 6.73999 12.09C7.44033 12.5379 8.01525 13.1565 8.41062 13.8877C8.80598 14.6189 9.00879 15.4388 9 16.27V21.54L15 20.54V16.25C14.9912 15.4188 15.194 14.599 15.5894 13.8677C15.9847 13.1365 16.5597 12.5178 17.26 12.07C18.7071 11.175 19.9019 9.92554 20.7314 8.43988C21.5608 6.95422 21.9975 5.28153 22 3.58002Z"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                </svg>
+                Filter
+            </div>
+        </div>
+    </div>
+
+</main>
