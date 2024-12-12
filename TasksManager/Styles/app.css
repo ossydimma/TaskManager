@@ -1,3 +1,31 @@
 ﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+    width: 10px;
+    /* height: 12px; */
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+/* Scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
+
+/* Scrollbar corner (for both vertical and horizontal scrollbars) */
+::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+}

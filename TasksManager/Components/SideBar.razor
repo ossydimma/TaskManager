@@ -365,9 +365,10 @@
     }
 
 
-    private void HandleCreateTaskDisplay()
+    private async Task HandleCreateTaskDisplay()
     {
-        SharedData.ShowCreateTask = !SharedData.ShowCreateTask;
+        SharedData.ShowCreateTask = !SharedData.ShowCreateTask;   
+        await JSRuntime.InvokeVoidAsync("scrollTo");
 
     }
 

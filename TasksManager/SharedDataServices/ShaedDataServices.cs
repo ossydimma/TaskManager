@@ -22,4 +22,5 @@ namespace TasksManager.SharedDataServices
         public event Action? OnChange;
         public void NotifyStateChanged() => OnChange?.Invoke();
     }
+
 }

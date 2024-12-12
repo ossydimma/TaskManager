@@ -2,14 +2,14 @@
 @inject SharedDataServices.SharedDataService SharedData
 @implements IDisposable
 
-<main>
-    <div class="flex justify-between items-center px-4">
+<main class="text-xs xs:text-sm md:text-[1rem]"> 
+    <section class="flex justify-between items-center px-4 mt-10">
         @* <h1 class="font-bold font-serif text-2xl">My Tasks</h1> *@
-        <section class=" flex gap-2 items-center text-sm">
+        <div class=" flex gap-2 items-center text-sm">
             <div class="py-2 px-4 bg-black text-white rounded-xl cursor-pointer">All Tasks</div>
-            <div class="py-2 px-4  text-black border border-gray-500 cursor-pointer rounded-xl">On Progress</div>
+            <div class="py-2 px-4  text-black border border-gray-500 cursor-pointer rounded-xl">Pending</div>
             <div class="py-2 px-4  text-black border border-gray-500 cursor-pointer rounded-xl">Completed</div>
-        </section>
+        </div>
         
         <div class="flex items-center gap-3">
            
@@ -28,7 +28,7 @@
             </div>
 
             <div
-                class=" border text-sm border-gray-600 rounded-md py-2 px-2.5 flex items-center gap-1 cursor-pointer bg-black hover:bg-white text-white hover:text-black stroke-white hover:stroke-black"
+                class="hidden border text-sm border-gray-600 rounded-md py-2 px-2.5 xs:flex items-center gap-1 cursor-pointer hover:bg-black hover:text-white stroke-black hover:stroke-white"
                 @onclick="HandleCreateTaskDisplay"
                 >
                 <svg class="w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,57 +44,29 @@
             </div>
         </div>
         
-    </div>
-    <section class="w-[98%] h-[50vh]  mx-2 mt-5">
-        <div class="  grid grid-cols-7 text-center mb-0">
-            @foreach (string table in new[] { "Category", "Task Name", "Description", "Deadline", "Status", ""})
+    </section>
+    <section class="h-auto w-[98%] md:h-[70vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
+        <div class="  grid grid-cols-6 text-center bg-gray-300   ">
+            @foreach (string table in new[] { "Type", "Task Name", "Description", "Deadline", "Status"})
             {
-                <div class="font-bold py-1 @(table == "Description" ? "col-span-2" : "")">@table</div>
+                <div class="font-bold py-2 @(table == "Description" ? "col-span-2" : "")">@table</div>
             }
+        </div>
+
+        <div class="h-[100%] overflow-y-scroll overflow-x-hidden pb-[5%] "
+            <div class="  grid grid-cols-6 justify-between">
+                @foreach ( TaskItem? item in AllTasks )
+                {
+                    <div class="border border-gray-400 flex justify-center items-center py-2 px-2 ">@item.Type</div>
+                    <div class="border border-gray-400 flex justify-center items-center py-2 px-2 ">@item.TaskName</div>
+                    <div class="border border-gray-400 flex justify-center items-center py-2 px-2 col-span-2">@item.Description</div>
+                    <div class="border border-gray-400 flex justify-center items-center py-2 px-2 ">@item.Deadline</div>
+                    <div class="border border-gray-400 flex justify-center items-center py-2 px-2 ">@item.Status</div>
+                }
+            </div>
         </div>
         
-        <div class="  grid grid-cols-7 justify-between border border-b-2 -mt-1">
-            @foreach (string item in new[] { "Personal", "Shopping", "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd ", "10/11/2024", "Completed", ":" })
-            {
-                <div class="border border-gray-400 flex justify-center items-center py-5 @(item.Length > 12 ? "col-span-2" : "")">@item</div>
-            }
-        </div>
-        <div class="  grid grid-cols-7 justify-between border border-b-2 -mt-1">
-            @foreach (string item in new[] { "Personal", "Shopping", "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd ", "10/11/2024", "Completed", ":" })
-            {
-                <div class="border border-gray-400 flex justify-center items-center py-5 @(item.Length > 12 ? "col-span-2" : "")">@item</div>
-            }
-        </div>
-        <div class="  grid grid-cols-7 justify-between border border-b-2 -mt-1">
-            @foreach (string item in new[] { "Personal", "Shopping", "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd ", "10/11/2024", "Completed", ":" })
-            {
-                <div class="border border-gray-400 flex justify-center items-center py-5 @(item.Length > 12 ? "col-span-2" : "")">@item</div>
-            }
-        </div>
-        <div class="  grid grid-cols-7 justify-between border border-b-2 -mt-1">
-            @foreach (string item in new[] { "Personal", "Shopping", "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd ", "10/11/2024", "Completed", ":" })
-            {
-                <div class="border border-gray-400 flex justify-center items-center py-5 @(item.Length > 12 ? "col-span-2" : "")">@item</div>
-            }
-        </div>
-        <div class="  grid grid-cols-7 justify-between border border-b-2 -mt-1">
-            @foreach (string item in new[] { "Personal", "Shopping", "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd ", "10/11/2024", "Completed", ":" })
-            {
-                <div class="border border-gray-400 flex justify-center items-center py-5 @(item.Length > 12 ? "col-span-2" : "")">@item</div>
-            }
-        </div>
-        <div class="  grid grid-cols-7 justify-between border border-b-2 -mt-1">
-            @foreach (string item in new[] { "Personal", "Shopping", "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd ", "10/11/2024", "Completed", ":" })
-            {
-                <div class="border border-gray-400 flex justify-center items-center py-5 @(item.Length > 12 ? "col-span-2" : "")">@item</div>
-            }
-        </div>
-        <div class="  grid grid-cols-7 justify-between border border-b-2 -mt-1">
-            @foreach (string item in new[] { "Personal", "Shopping", "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd ", "10/11/2024", "Completed", ":" })
-            {
-                <div class="border border-gray-400 flex justify-center items-center py-5 @(item.Length > 12 ? "col-span-2" : "")">@item</div>
-            }
-        </div>
+
         
     </section>
 </main>
@@ -115,4 +87,75 @@
     {
         SharedData.OnChange -= StateHasChanged;
     }
+
+    public class TaskItem
+    {
+        public string Type { get; set; } = string.Empty;
+        public string TaskName { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Deadline { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
+    }
+
+    private TaskItem[] AllTasks = new[]
+    {
+        new TaskItem
+        {
+            Type = "Work",
+            TaskName = "Design a Hero page",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = "10/06/2023",
+            Status = "Pending"
+        },
+        new TaskItem
+        {
+            Type = "personal",
+            TaskName = "Shopping",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = "10/06/2023",
+            Status = "Completed"
+        },
+        new TaskItem
+        {
+            Type = "Other",
+            TaskName = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = "10/06/2023",
+            Status = "Pending"
+        },
+         new TaskItem
+        {
+            Type = "personal",
+            TaskName = "Shopping",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = "10/06/2023",
+            Status = "Completed"
+        },
+        new TaskItem
+        {
+            Type = "Work",
+            TaskName = "Design a Hero page",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = "10/06/2023",
+            Status = "Pending"
+        },
+        new TaskItem
+        {
+            Type = "Other",
+            TaskName = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = "10/06/2023",
+            Status = "Pending"
+        },
+        new TaskItem
+        {
+            Type = "Other",
+            TaskName = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = "10/06/2023",
+            Status = "Pending"
+        },
+    };
+
+    
 }
