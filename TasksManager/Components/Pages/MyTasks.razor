@@ -2,13 +2,13 @@
 @inject SharedDataServices.SharedDataService SharedData
 @implements IDisposable
 
-<main class="text-xs xs:text-sm md:text-[1rem]"> 
-    <section class="flex justify-between items-center px-4 mt-10">
+<main class="text-xs xs:text-sm md:text-[1rem] border-gray-500 border-t-2 border-dotted"> 
+    <section class="flex justify-between items-center px-4 mt-8 -mb-2">
         @* <h1 class="font-bold font-serif text-2xl">My Tasks</h1> *@
         <div class=" flex gap-2 items-center text-sm">
             <div class="py-2 px-4 bg-black text-white rounded-xl cursor-pointer">All Tasks</div>
-            <div class="py-2 px-4  text-black border border-gray-500 cursor-pointer rounded-xl">Pending</div>
-            <div class="py-2 px-4  text-black border border-gray-500 cursor-pointer rounded-xl">Completed</div>
+            <div class="py-2 px-4  text-black border border-gray-500 cursor-pointer rounded-xl hover:bg-black hover:text-white stroke-black hover:stroke-white">Pending</div>
+            <div class="py-2 px-4  text-black border border-gray-500 cursor-pointer rounded-xl hover:bg-black hover:text-white stroke-black hover:stroke-white">Completed</div>
         </div>
         
         <div class="flex items-center gap-3">
@@ -45,9 +45,9 @@
         </div>
         
     </section>
-    <section class="h-auto w-[98%] md:h-[70vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
+    <section class="h-auto w-[98%] md:h-[69vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
         <div class="  grid grid-cols-6 text-center bg-gray-300   ">
-            @foreach (string table in new[] { "Type", "Task Name", "Description", "Deadline", "Status"})
+            @foreach (string table in new[] { "Category", "Task Name", "Description", "Deadline", "Status"})
             {
                 <div class="font-bold py-2 @(table == "Description" ? "col-span-2" : "")">@table</div>
             }
@@ -65,9 +65,6 @@
                 }
             </div>
         </div>
-        
-
-        
     </section>
 </main>
 

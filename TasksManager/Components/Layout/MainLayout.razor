@@ -17,6 +17,12 @@
 </div>
 
 @code {
+    protected override void OnInitialized()
+    {
+        // Check if the current page is "/"
+        @* var currentPage = new Uri(Navigation.Uri).LocalPath;
+        IsHomePage = currentPage == "/"; *@
+    }
     @* private bool showCreateTask = false;
     private void HandleCreateTaskChanged (bool newValue)
     {

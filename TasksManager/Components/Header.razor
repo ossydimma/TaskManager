@@ -2,8 +2,9 @@
 @using TasksManager.SharedDataServices
 @inject IJSRuntime JSRuntime
 @inject SharedDataServices.SharedDataService SharedData
+@inject NavigationManager Navigation
 
-<div class="  w-[100%] h-[8vh] px-2 md:px-6 mt-[1vh] sm:py-[6vh]  flex items-center justify-between">
+<div class="  w-[100%] h-[8vh] px-2 md:px-6 mt-[1vh] sm:pt-[6vh] sm:pb-[4.5vh]  flex items-center justify-between border-dashed @GetResponsiveClass()">
 
     <div class=" flex items-center gap-1 ">
         <div class="p-2 rounded-lg bg-[#5577FF]">
@@ -96,10 +97,17 @@
 
 @code {
     private bool ShowDate {get; set;}
-
+    private int Width;
     private string CurrentDate = DateTime.Now.ToString("dddd, MMMM d");
+    [Parameter]
+    public string CurrentPage { get; set; } = String.Empty; 
 
     private DotNetObjectReference<Header>? dotNetRef;
+
+    protected override void OnInitialized()
+    {
+        CurrentPage = new Uri(Navigation.Uri).LocalPath;
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -111,15 +119,18 @@
             UpdateScreenWidth(screenWidth);
 
             await JSRuntime.InvokeVoidAsync("screenHelper.onResize", dotNetRef);
+            StateHasChanged();
         }
 
 
     }
 
     [JSInvokable]
-    public void UpdateScreenWidth(int width)
+    public void UpdateScreenWidth(int screenWidth)
     {
-        if ( width <= 600 )
+            
+        Width = screenWidth;
+        if ( screenWidth <= 600 )
         {
             ShowDate = false;
         }
@@ -130,4 +141,16 @@
         StateHasChanged();
     }
 
+
+    private string GetResponsiveClass()
+    {
+        if (CurrentPage == "/" && Width >= 815)
+        {
+            return "border-gray-500 border-b-2";
+        }
+        else 
+        {
+            return "";
+        }
+    }
 }
