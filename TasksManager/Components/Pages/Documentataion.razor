@@ -3,40 +3,95 @@
 @inject SharedDataServices.SharedDataService SharedData
 
 @* <h2>Documentation</h2> *@
-<main class="flex justify-between flex-col gap-5 md:gap-2 md:flex-row-reverse h-[80%] mt-5">
-    <section class=" flex flex-col gap-6 px-2 overflow-y-scroll h-full w-full md:w-[38%] ">
+<main class="flex justify-between items-center flex-col gap-4 md:gap-2 md:flex-row h-[85%] pt-5 border-gray-500 border-t-2 border-dotted">
+    
+    <section class="w- md:w-[60%] h-[80vh] sm:h-[95vh] md:h-full mx-3 md:mx-4 shadow-2xl rounded-2xl border py-2 md:py-6 px-2 md:px-6">
+
+        <div class="flex items-center justify-between">
+            <input type="text" placeholder="Enter Title" class="w-[100%] outline-none border-b border-gray-700  py-2 px-4 bg-transparent font-serif font-bold">
+        </div>
+
+        <div class=" h-[58%] md:h-[78%] ">
+            <textarea name="Document" placeholder="Start Documenting..." class="w-full h-full p-4 bg-transparent outline-none"></textarea>
+        </div>
+
+        <div class=" flex justify-end mt-4">
+            <button type="submit" class=" ml-auto py-2 px-8 bg-black text-white rounded-xl cursor-pointer hover:text-black hover:bg-white hover:border border-black">Save</button>
+        </div>
+
+    </section>
+    
+    <section class=" flex flex-col  gap-6 px-2 overflow-y-scroll h-full w-full md:w-[38%] ">
         @foreach(Document? item in Documents)
         {
-            <div class="w-full h-[30rem] border shadow-xl rounded-2xl  px-6 py-6 bg-black text-white">
-                <h1 class="font-mono font-bold text-2xl">@item.Title</h1>
-                <p class="text-sm mt-1 mb-3 font-mono font-semibold pl-1">@item.Date</p>
-                <p class="text-[1rem] px-3 font-serif">@item.HalvedContent</p>
+            <div 
+                class="flex flex-col justify-center  w-full h-[30rem] border shadow-xl rounded-2xl px-4 md:px-6 py-6 bg-black text-white relative cursor-pointer"
+                @onmouseover=" () => HandleDisplayMore(item.Id)"
+                @onmouseleave="() => HandleHideMore(item.Id)"
+            >
+
+                <div class="flex justify-between items-center font-mono font-bold text-2xl md:text-lg lmd:text-2xl">
+                    <h1 >@item.Title</h1>
+                    @* <p class="" >:</p> *@
+                </div>
+
+                <p class="text-xs md:text-xs lmd:text-sm mt-1 mb-3 font-mono font-semibold pl-1">@item.Date</p>
+                <p class="text-[1rem] md:text-sm lmd:text-[1rem] px-3 font-serif">@item.HalvedContent</p>
+
+                <ul class="@GetActiveClass(item.IsHovered) absolute top-14 right-1 bg-white text-black w-fit p-2 list-disc list-inside font-mono font-medium rounded-2xl">
+                    <li class="hover:bg-black hover:text-white rounded-xl px-4 py-1 cursor-pointer">Edit Document</li>
+                    <li class="hover:bg-black hover:text-white rounded-xl px-4 py-1 cursor-pointer">Read Document </li>
+                </ul>
+                
             </div>
         }
         
     </section>
-    <section class="w-[100%] md:w-[60%] h-full md:mx-4 shadow-2xl rounded-2xl border py-6 px-6">
-        <div class="flex items-center justify-between">
-            <input type="text" placeholder="Enter Title" class="w-[100%] outline-none border-b border-gray-700  py-2 px-4 bg-transparent font-serif font-bold">
-            @* <button type="submit" class="py-2 px-8 bg-black text-white rounded-xl cursor-pointer hover:text-black hover:bg-white hover:border border-black">Save</button> *@
-        </div>
-        <div class="mt- h-[78%] ">
-            <textarea name="Document" placeholder="Start Documenting..." class="w-full h-full p-4 bg-transparent outline-none"></textarea>
-        </div>
-        <div class=" flex justify-end mt-4">
-            <button type="submit" class=" ml-auto py-2 px-8 bg-black text-white rounded-xl cursor-pointer hover:text-black hover:bg-white hover:border border-black">Save</button>
-        </div>
-    </section>
-    
+
 </main>
 
 
 @code {
 
-    
+    private bool DisplayMore { get; set;} = false;
+    private Guid? ActiveItem {get; set;} = null;
     protected override void OnInitialized()
     {
         SharedData.OnChange += StateHasChanged;
+    }
+
+    private void HandleDisplayMore(Guid id)
+    {
+        Document? item = Documents.FirstOrDefault(i => i.Id == id);
+        if (item != null)
+        {
+           item.IsHovered = true;
+        }
+        else 
+        {
+            Console.WriteLine($"{item} not found");
+        }
+        
+    }
+
+    private void HandleHideMore(Guid id)
+    {
+
+        Document? item = Documents.FirstOrDefault(i => i.Id == id);
+        if (item != null)
+        {
+           item.IsHovered = false;
+        }
+         else 
+        {
+            Console.WriteLine($"{item} not found");
+        }
+        
+    }
+
+    private string GetActiveClass(bool isHovered)
+    {
+        return isHovered ? "visible" : "hidden";
     }
 
 
@@ -47,9 +102,11 @@
 
     public class Document 
     {
+        public Guid Id {get; set;}
         public string Title { get; set;} = string.Empty;
         public string Date { get; set;} = string.Empty;
         public string Content { get; set;} = string.Empty;
+        public bool IsHovered { get; set; } = false;
         public string HalvedContent { 
             get
             {
@@ -68,18 +125,21 @@
     {
         new Document
         {
+            Id = Guid.NewGuid(),
+            Title = "Aglorthim of Calculation",
+            Date = new DateTime(2024, 12, 08).ToString("dd MMMM yyyy"),
+            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        new Document
+        {
+            Id = Guid.NewGuid(),
             Title = "Aglorthim of Calculation",
             Date = new DateTime(2024, 12, 08).ToString("dd MMMM yyyy"),
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         },
         new Document
         {
-            Title = "Aglorthim of Calculation",
-            Date = new DateTime(2024, 12, 08).ToString("dd MMMM yyyy"),
-            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        },
-        new Document
-        {
+            Id = Guid.NewGuid(),
             Title = "Aglorthim of Calculation",
             Date = new DateTime(2024, 12, 08).ToString("dd MMMM yyyy"),
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
