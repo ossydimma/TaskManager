@@ -5,15 +5,24 @@
 @* <h2>Documentation</h2> *@
 <main class="flex justify-between items-center flex-col gap-4 md:gap-2 md:flex-row h-[85%] pt-5 border-gray-500 border-t-2 border-dotted">
     
-    <section class="w- md:w-[60%] h-[80vh] sm:h-[95vh] md:h-full mx-3 md:mx-4 shadow-2xl rounded-2xl border py-2 md:py-6 px-2 md:px-6">
+    <section class="w-[94%] md:w-[60%] h-[80vh] sm:h-[95vh] md:h-full mx-3 md:mx-4 shadow-2xl rounded-2xl border py-2 md:py-6 px-2 md:px-6 relative">
 
         <div class="flex items-center justify-between">
-            <input type="text" placeholder="Enter Title" readonly="@IsReadOnly" value="@ContentTitle" class="w-[100%] outline-none border-b border-gray-700  py-2 px-4 bg-transparent font-serif font-bold ">
+            <input type="text" placeholder="Enter Title" readonly="@IsReadOnly" @bind="@ContentTitle"   class="w-[100%] outline-none border-b border-gray-700  py-2 px-4 bg-transparent font-serif font-bold ">
         </div>
 
         <div class=" h-[58%] md:h-[78%] ">
-            <textarea name="Document" placeholder="Start Documenting..." readonly="@IsReadOnly" value="@ContentBody" class="w-full h-full p-4 bg-transparent outline-none "></textarea>
+            <textarea name="Document" placeholder="Start Documenting..." readonly="@IsReadOnly" @bind="@ContentBody"  class="w-full h-full p-4 bg-transparent outline-none "></textarea>
         </div>
+
+        @if (Feedback)
+        {
+            <div class=" bg-red-500  border w-[80%] h-fit py-10 flex flex-col gap-4 justify-center items-center rounded-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ">
+                <p class=" text-2xl text-white font-mono font-semibold">@FeedbackText</p>
+                <button class="bg-white text-black hover:text-red-600 py-3 px-10 rounded-2xl font-bold hover:scale-90 transition-transform duration-300" @onclick="()=> Feedback = !Feedback ">Ok</button>
+            </div>
+        }
+        
 
         <div class=" flex justify-end mt-4">
             @if(IsReadOnly)
@@ -45,18 +54,24 @@
             }
             else 
             {
-                <button type="submit" class=" ml-auto py-2 px-8 bg-black text-white rounded-xl cursor-pointer hover:text-black hover:bg-white hover:border border-black">Save</button>
+
+                <button type="submit"  class="  py-2 px-8 text-white rounded-xl hover:text-black hover:bg-white hover:border border-black bg-black cursor-pointer ">Discard</button>
+                <button type="submit" 
+                    class=" ml-auto py-2 px-8  text-white rounded-xl  hover:text-black hover:bg-white hover:border border-black bg-black cursor-pointer "
+                    @onclick="HandleSave"
+                >Save</button>
+               
             }
                     
         </div>
 
     </section>
     
-    <section class=" flex flex-col  gap-6 px-2 overflow-y-scroll h-full w-full md:w-[38%] ">
+    <section class=" flex flex-col  gap-7 px-2 overflow-y-scroll h-full w-full md:w-[38%] ">
         @foreach(Document? item in Documents)
         {
             <div 
-                class="flex flex-col justify-center  w-full h-[30rem] border shadow-xl rounded-2xl px-4 md:px-6 py-6 bg-black text-white relative cursor-pointer"
+                class="flex flex-col justify-center  w-full h-[30rem] border shadow-xl rounded-2xl px-4 md:px-6 py-8 bg-black text-white relative cursor-pointer"
                 @onmouseover=" () => HandleDisplayMore(item.Id)"
                 @onmouseleave="() => HandleHideMore(item.Id)"
             >
@@ -81,15 +96,39 @@
 
 @code {
 
-    private string? ContentTitle { get; set; } = null!;
-    private string? ContentBody { get; set; } = null!;
+    private string ContentTitle { get; set; } = string.Empty!;
+    private string ContentBody { get; set; } = string.Empty!;
     private bool IsReadOnly { get; set; } = false;
+    private bool Feedback{ get; set; } = false;
+    private string? FeedbackText{ get; set; } = null!;
 
     private bool DisplayMore { get; set;} = false;
     private Guid? ActiveItem {get; set;} = null;
+
     protected override void OnInitialized()
     {
         SharedData.OnChange += StateHasChanged;
+    }
+
+    private void HandleSave()
+    {
+        if ( ContentTitle.Length < 1 )
+        {
+            Feedback = !Feedback;
+            FeedbackText = " Document title feild cannot be empty.";
+            
+        }
+        else if ( ContentBody.Length < 1 )
+        {
+            Feedback = !Feedback;
+            FeedbackText = "No Documentation was made.";
+        }
+        else 
+        {
+            @* Add ApI here *@
+            Console.WriteLine("saved");
+        }
+        @* StateHasChanged(); *@
     }
 
     private void HandleDisplayMore(Guid id)
@@ -123,6 +162,7 @@
 
     private void ReadDocument(Guid id)
     {
+        StateHasChanged();
         Document? item = Documents.FirstOrDefault(i => i.Id == id);
         if(item != null)
         {
@@ -140,6 +180,7 @@
 
     private void EditDocument(Guid id)
     {
+        StateHasChanged();
         Document? item = Documents.FirstOrDefault(i => i.Id == id);
         if(item != null)
         {

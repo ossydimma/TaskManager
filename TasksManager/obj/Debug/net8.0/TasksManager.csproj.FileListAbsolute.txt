@@ -1,4 +1,5 @@
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\TasksManager.Client.staticwebassets.runtime.json
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\TasksManager.Client.staticwebassets.endpoints.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\appsettings.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\package-lock.json
@@ -15,6 +16,7 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\BlazorDebugProxy\Microsoft.SymbolStore.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\BlazorDebugProxy\Newtonsoft.Json.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\TasksManager.staticwebassets.runtime.json
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\TasksManager.staticwebassets.endpoints.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\TasksManager.exe
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\TasksManager.deps.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net8.0\TasksManager.runtimeconfig.json
@@ -40,16 +42,18 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\TasksManager.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\TasksManager.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\TasksManager.sourcelink.json
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\scopedcss\bundle\TasksManager.styles.css
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\scopedcss\projectbundle\TasksManager.bundle.scp.css
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets\msbuild.TasksManager.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets\msbuild.TasksManager.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets\msbuild.build.TasksManager.props
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TasksManager.props
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TasksManager.props
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\scopedcss\bundle\TasksManager.styles.css
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\scopedcss\projectbundle\TasksManager.bundle.scp.css
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\TasksMan.6C093635.Up2Date
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\TasksManager.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net8.0\refint\TasksManager.dll

@@ -1,9 +1,10 @@
 ﻿@* @rendermode RenderMode.InteractiveAuto *@
 @inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
 
 <div class="bg-[#dadde2] w-screen h-auto md:h-screen pr-0 md:pr-3 sm:pr-1 flex gap-0 sm:gap-1 md:gap-3">
-    <SideBar />
-    <div class="relative bg-[#f6f5f5] h-[98Vh] overflow-x-hidden overflow-y-scroll md:overflow-hidden my-0 sm:my-[1vh]  w-screen sm:rounded-[2rem] opacity-">
+    <SideBar OnScrollToTop="ScrollToTop" />
+    <div class="relative bg-[#f6f5f5] h-[98Vh] overflow-x-hidden overflow-y-scroll md:overflow-hidden my-0 sm:my-[1vh]  w-screen sm:rounded-[2rem] opacity-" @ref="ScrollableDiv" >
         <Header />
          @Body    
         <CreateTask />
@@ -17,16 +18,10 @@
 </div>
 
 @code {
-    protected override void OnInitialized()
+    private ElementReference ScrollableDiv;
+
+    private async Task ScrollToTop()
     {
-        // Check if the current page is "/"
-        @* var currentPage = new Uri(Navigation.Uri).LocalPath;
-        IsHomePage = currentPage == "/"; *@
+        await JSRuntime.InvokeVoidAsync("scrollToTop", ScrollableDiv);
     }
-    @* private bool showCreateTask = false;
-    private void HandleCreateTaskChanged (bool newValue)
-    {
-        showCreateTask = newValue;
-        StateHasChanged();
-    } *@
 }

@@ -311,6 +311,8 @@
 </div>
 
 @code {
+    [Parameter]
+    public EventCallback OnScrollToTop { get; set; }
     private bool ShowSideBar { get; set; }
     private DotNetObjectReference<SideBar>? dotNetRef;
     protected override void OnInitialized()
@@ -368,7 +370,7 @@
     private async Task HandleCreateTaskDisplay()
     {
         SharedData.ShowCreateTask = !SharedData.ShowCreateTask;   
-        await JSRuntime.InvokeVoidAsync("scrollTo");
+        await OnScrollToTop.InvokeAsync();
 
     }
 

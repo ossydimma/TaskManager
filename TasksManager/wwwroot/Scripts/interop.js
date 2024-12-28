@@ -1,3 +1,7 @@
+window.scrollToTop = (element) => {
+    element.scrollTo({top: 0,  behavior: 'smooth'});
+};
+
 window.screenHelper = {
     getScreenWidth: () => window.innerWidth,
     onResize: (dotNetHelper) => {
@@ -6,8 +10,3 @@ window.screenHelper = {
         });
     }
 }
-
-window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-});
