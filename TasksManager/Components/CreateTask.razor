@@ -1,5 +1,3 @@
-@* @rendermode RenderMode.InteractiveServer *@
-@* @inject IJSRuntime JSRuntime *@
 @using Microsoft.EntityFrameworkCore
 @using TasksManager.SharedDataServices
 @using TasksManager.Models
@@ -41,10 +39,6 @@
                     <InputText id="title" @bind-Value="task.Title" placeholder="Enter Project Title"
                         class="border border-gray-600 rounded-lg outline-none py-2 px-4  w-[100%]"/>
                     <ValidationMessage class="text-red-500" For="() => task.Title" />
-                @* <div class="flex flex-col">
-                    <label for="projectName" class="text-lg font-medium">Project Name</label>
-                    <input name="projectName" required type="text" placeholder="Enter Project name"
-                        class="border border-gray-600 rounded-lg outline-none py-2 px-4  w-[100%]"> *@
                 </div>
 
 
@@ -55,9 +49,6 @@
                     <ValidationMessage class="text-red-500" For="() => task.Deadline" />
                 </div>
                 <div>
-                    @* <textarea name="description" required placeholder="Enter a description..."
-                    class="border border-gray-600 rounded-lg  outline-none pt-2 px-2  h-24 w-[100%]"></textarea> *@
-
                     <InputTextArea id="description" @bind-Value="task.Description"  placeholder="Enter a description"
                        class="border border-gray-600 rounded-lg outline-none py-2 px-4 w-[100%] h-24" />
                     <ValidationMessage class="text-red-500" For="() => task.Description" />
@@ -82,11 +73,6 @@
 
     </main>
 }
-
-
-
-
-
 
 @code {
     private UserTasks task {get;set;} = new();

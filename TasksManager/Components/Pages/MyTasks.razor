@@ -1,4 +1,6 @@
 @page "/mytasks"
+@using Microsoft.AspNetCore.Components.QuickGrid 
+@using TasksManager.Models
 @inject SharedDataServices.SharedDataService SharedData
 @implements IDisposable
 
@@ -45,7 +47,20 @@
         </div>
         
     </section>
-    <section class="h-auto w-[98%] md:h-[69vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
+    <section >
+        <QuickGrid Items="tasks" class="w-full">
+            @* <div class=""> *@
+                <PropertyColumn Property="item => item.Category" Title="Category"  />
+                <PropertyColumn Property="item => item.Title" Title="Task Name"  />
+                <PropertyColumn Property="item => item.Description" Title="Description" />
+                <PropertyColumn Property="item => item.Deadline" Title="Deadline"  />
+                <PropertyColumn Property="item => item.Status" Title="Status"  />
+            @* </div> *@
+            
+        </QuickGrid>
+
+    </section>
+    @* <section>
         <div class="  grid grid-cols-6 text-center bg-gray-300   ">
             @foreach (string table in new[] { "Category", "Task Name", "Description", "Deadline", "Status"})
             {
@@ -65,7 +80,7 @@
                 }
             </div>
         </div>
-    </section>
+    </section> *@
 </main>
 
 @code {
@@ -85,16 +100,49 @@
         SharedData.OnChange -= StateHasChanged;
     }
 
-    public class TaskItem
+    @* public class TaskItem
     {
         public string Type { get; set; } = string.Empty;
         public string TaskName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Deadline { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
-    }
+    } *@
 
-    private TaskItem[] AllTasks = new[]
+    private IQueryable<UserTasks> tasks = new []
+    {
+        new UserTasks
+        {
+            Title = "Design a Hero page",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Category = "Work",
+            Deadline = DateOnly.Parse("2023-06-10"), 
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Shopping",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"), 
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Status = true
+        },
+    }.AsQueryable();
+
+    @* private TaskItem[] AllTasks = new[]
     {
         new TaskItem
         {
@@ -152,7 +200,7 @@
             Deadline = "10/06/2023",
             Status = "Pending"
         },
-    };
+    }; *@
 
     
 }

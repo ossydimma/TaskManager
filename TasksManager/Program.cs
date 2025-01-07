@@ -14,7 +14,7 @@ builder.Services.AddServerSideBlazor()
     .AddCircuitOptions(options => options.DetailedErrors = true);
     
     
-
+builder.Services.AddQuickGridEntityFrameworkAdapter();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
