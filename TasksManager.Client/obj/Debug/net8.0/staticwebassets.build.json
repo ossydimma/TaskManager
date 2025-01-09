@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "23iDYTA8DSvzPkVVwxwygJd/s4JzGz+P3wTMCiW06ok=",
+  "Hash": "7z2lgYH1O+5aCIKnTBt7OukemnY775LYqORH14cx+uc=",
   "Source": "TasksManager.Client",
   "BasePath": "/",
   "Mode": "Default",
@@ -23,8 +23,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "kx2mn4k7q6",
-      "Integrity": "qEDFjPtDwNKxLKzk0hKYs1hgjXpnpcmvIrQRDal+Bcc=",
+      "Fingerprint": "zw09bi97ba",
+      "Integrity": "4y8+jm0vQgZAmvZDngz4N5W8BW84YXuKgV17LFudoNE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net8.0\\blazor.boot.json"
@@ -4265,8 +4265,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "rtn309ovpc",
-      "Integrity": "oWABt1OQpzP/sJ823r13uAtYekDoNxCkvHwgY2V6O5E=",
+      "Fingerprint": "m1sd2mup4l",
+      "Integrity": "xrZ4giowdZXry1PTWNP2u0aSdw6167LtKxd2pRwqk90=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net8.0\\TasksManager.Client.pdb"
@@ -4286,8 +4286,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "kfisd28e00",
-      "Integrity": "UMGmP8kPD5xqj8M74OoVCr3Xt9x6SvpapmQxl3qndH0=",
+      "Fingerprint": "ej0ndbd6nk",
+      "Integrity": "euvij9XEKcsbO+Igq96xLGdhzynl9aauD7ELkUCDNxw=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\webcil\\TasksManager.Client.wasm"
@@ -6645,7 +6645,7 @@
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.AppContext.wasm"
     },
     {
-      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\igfyc8ena0-kx2mn4k7q6.gz",
+      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\igfyc8ena0-zw09bi97ba.gz",
       "SourceId": "TasksManager.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -6659,8 +6659,8 @@
       "RelatedAsset": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "506jwf853m",
-      "Integrity": "JSFsn80WddMxUiORrUcJOu8vqkW3spcWP9CjE9GwBBc=",
+      "Fingerprint": "a4f1dhj4hv",
+      "Integrity": "ykNHY9u5a+oCyJrxSEgsNIuOnPYTNBBtQCko6R3ms3w=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -7485,7 +7485,7 @@
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Runtime.Extensions.wasm"
     },
     {
-      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\q1265knk41-kfisd28e00.gz",
+      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\q1265knk41-ej0ndbd6nk.gz",
       "SourceId": "TasksManager.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -7499,8 +7499,8 @@
       "RelatedAsset": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\TasksManager.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "eulytih9ez",
-      "Integrity": "FrhpTESy98h0QtxtGSiO13O3aI29cwVjm6wDdRFdIFU=",
+      "Fingerprint": "o9wvi40n52",
+      "Integrity": "HFcjYAZr5iMbHVxrS3ufQzRqY7dPpJlMQGRSCIUVxJY=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\TasksManager.Client.wasm"
@@ -8367,7 +8367,7 @@
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Diagnostics.StackTrace.wasm"
     },
     {
-      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\ymrfclvpdl-rtn309ovpc.gz",
+      "Identity": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\ymrfclvpdl-m1sd2mup4l.gz",
       "SourceId": "TasksManager.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\",
@@ -8381,8 +8381,8 @@
       "RelatedAsset": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\TasksManager.Client.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "2mr5ufphm0",
-      "Integrity": "CmU1YcjUP8EYcraoF2MovuYQiENQ6UsV+/dBzQV3ZX8=",
+      "Fingerprint": "ifqrj767hk",
+      "Integrity": "jk3kxCiY0moik83Pt4O1KYgS12kypXEo9rCLj0WgP5U=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\TasksManager.Client.pdb"
@@ -8639,11 +8639,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qEDFjPtDwNKxLKzk0hKYs1hgjXpnpcmvIrQRDal+Bcc=\""
+          "Value": "\"4y8+jm0vQgZAmvZDngz4N5W8BW84YXuKgV17LFudoNE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:26:47 GMT"
+          "Value": "Thu, 09 Jan 2025 14:13:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8653,18 +8653,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qEDFjPtDwNKxLKzk0hKYs1hgjXpnpcmvIrQRDal+Bcc="
+          "Value": "sha256-4y8+jm0vQgZAmvZDngz4N5W8BW84YXuKgV17LFudoNE="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\igfyc8ena0-kx2mn4k7q6.gz",
+      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\igfyc8ena0-zw09bi97ba.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000114929318"
+          "Quality": "0.000114902907"
         }
       ],
       "ResponseHeaders": [
@@ -8674,15 +8674,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8700"
+          "Value": "8702"
         },
         {
           "Name": "ETag",
-          "Value": "\"JSFsn80WddMxUiORrUcJOu8vqkW3spcWP9CjE9GwBBc=\""
+          "Value": "\"ykNHY9u5a+oCyJrxSEgsNIuOnPYTNBBtQCko6R3ms3w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:18:31 GMT"
+          "Value": "Thu, 09 Jan 2025 14:07:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8702,19 +8702,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"qEDFjPtDwNKxLKzk0hKYs1hgjXpnpcmvIrQRDal+Bcc=\""
+          "Value": "W/\"4y8+jm0vQgZAmvZDngz4N5W8BW84YXuKgV17LFudoNE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qEDFjPtDwNKxLKzk0hKYs1hgjXpnpcmvIrQRDal+Bcc="
+          "Value": "sha256-4y8+jm0vQgZAmvZDngz4N5W8BW84YXuKgV17LFudoNE="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\igfyc8ena0-kx2mn4k7q6.gz",
+      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\igfyc8ena0-zw09bi97ba.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -8723,7 +8723,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8700"
+          "Value": "8702"
         },
         {
           "Name": "Content-Type",
@@ -8731,11 +8731,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JSFsn80WddMxUiORrUcJOu8vqkW3spcWP9CjE9GwBBc=\""
+          "Value": "\"ykNHY9u5a+oCyJrxSEgsNIuOnPYTNBBtQCko6R3ms3w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 16:18:31 GMT"
+          "Value": "Thu, 09 Jan 2025 14:07:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8753,7 +8753,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-JSFsn80WddMxUiORrUcJOu8vqkW3spcWP9CjE9GwBBc="
+          "Value": "sha256-ykNHY9u5a+oCyJrxSEgsNIuOnPYTNBBtQCko6R3ms3w="
         }
       ]
     },
@@ -36313,11 +36313,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"oWABt1OQpzP/sJ823r13uAtYekDoNxCkvHwgY2V6O5E=\""
+          "Value": "\"xrZ4giowdZXry1PTWNP2u0aSdw6167LtKxd2pRwqk90=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 13:36:35 GMT"
+          "Value": "Tue, 07 Jan 2025 16:36:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -36327,18 +36327,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oWABt1OQpzP/sJ823r13uAtYekDoNxCkvHwgY2V6O5E="
+          "Value": "sha256-xrZ4giowdZXry1PTWNP2u0aSdw6167LtKxd2pRwqk90="
         }
       ]
     },
     {
       "Route": "_framework/TasksManager.Client.pdb",
-      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\ymrfclvpdl-rtn309ovpc.gz",
+      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\ymrfclvpdl-m1sd2mup4l.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000122488976"
+          "Quality": "0.000122518990"
         }
       ],
       "ResponseHeaders": [
@@ -36348,15 +36348,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8163"
+          "Value": "8161"
         },
         {
           "Name": "ETag",
-          "Value": "\"CmU1YcjUP8EYcraoF2MovuYQiENQ6UsV+/dBzQV3ZX8=\""
+          "Value": "\"jk3kxCiY0moik83Pt4O1KYgS12kypXEo9rCLj0WgP5U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 13:36:35 GMT"
+          "Value": "Tue, 07 Jan 2025 16:36:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -36376,19 +36376,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"oWABt1OQpzP/sJ823r13uAtYekDoNxCkvHwgY2V6O5E=\""
+          "Value": "W/\"xrZ4giowdZXry1PTWNP2u0aSdw6167LtKxd2pRwqk90=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oWABt1OQpzP/sJ823r13uAtYekDoNxCkvHwgY2V6O5E="
+          "Value": "sha256-xrZ4giowdZXry1PTWNP2u0aSdw6167LtKxd2pRwqk90="
         }
       ]
     },
     {
       "Route": "_framework/TasksManager.Client.pdb.gz",
-      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\ymrfclvpdl-rtn309ovpc.gz",
+      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\ymrfclvpdl-m1sd2mup4l.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -36397,7 +36397,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8163"
+          "Value": "8161"
         },
         {
           "Name": "Content-Type",
@@ -36405,11 +36405,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CmU1YcjUP8EYcraoF2MovuYQiENQ6UsV+/dBzQV3ZX8=\""
+          "Value": "\"jk3kxCiY0moik83Pt4O1KYgS12kypXEo9rCLj0WgP5U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 13:36:35 GMT"
+          "Value": "Tue, 07 Jan 2025 16:36:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -36427,7 +36427,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CmU1YcjUP8EYcraoF2MovuYQiENQ6UsV+/dBzQV3ZX8="
+          "Value": "sha256-jk3kxCiY0moik83Pt4O1KYgS12kypXEo9rCLj0WgP5U="
         }
       ]
     },
@@ -36450,11 +36450,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UMGmP8kPD5xqj8M74OoVCr3Xt9x6SvpapmQxl3qndH0=\""
+          "Value": "\"euvij9XEKcsbO+Igq96xLGdhzynl9aauD7ELkUCDNxw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 13:36:36 GMT"
+          "Value": "Tue, 07 Jan 2025 16:36:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -36464,18 +36464,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UMGmP8kPD5xqj8M74OoVCr3Xt9x6SvpapmQxl3qndH0="
+          "Value": "sha256-euvij9XEKcsbO+Igq96xLGdhzynl9aauD7ELkUCDNxw="
         }
       ]
     },
     {
       "Route": "_framework/TasksManager.Client.wasm",
-      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\q1265knk41-kfisd28e00.gz",
+      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\q1265knk41-ej0ndbd6nk.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000355618777"
+          "Quality": "0.000356506239"
         }
       ],
       "ResponseHeaders": [
@@ -36485,15 +36485,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2811"
+          "Value": "2804"
         },
         {
           "Name": "ETag",
-          "Value": "\"FrhpTESy98h0QtxtGSiO13O3aI29cwVjm6wDdRFdIFU=\""
+          "Value": "\"HFcjYAZr5iMbHVxrS3ufQzRqY7dPpJlMQGRSCIUVxJY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 13:36:36 GMT"
+          "Value": "Tue, 07 Jan 2025 16:36:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -36513,19 +36513,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UMGmP8kPD5xqj8M74OoVCr3Xt9x6SvpapmQxl3qndH0=\""
+          "Value": "W/\"euvij9XEKcsbO+Igq96xLGdhzynl9aauD7ELkUCDNxw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UMGmP8kPD5xqj8M74OoVCr3Xt9x6SvpapmQxl3qndH0="
+          "Value": "sha256-euvij9XEKcsbO+Igq96xLGdhzynl9aauD7ELkUCDNxw="
         }
       ]
     },
     {
       "Route": "_framework/TasksManager.Client.wasm.gz",
-      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\q1265knk41-kfisd28e00.gz",
+      "AssetFile": "C:\\Users\\user\\Desktop\\DotNet_Projects\\TasksManager\\TasksManager.Client\\obj\\Debug\\net8.0\\compressed\\q1265knk41-ej0ndbd6nk.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -36534,7 +36534,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2811"
+          "Value": "2804"
         },
         {
           "Name": "Content-Type",
@@ -36542,11 +36542,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"FrhpTESy98h0QtxtGSiO13O3aI29cwVjm6wDdRFdIFU=\""
+          "Value": "\"HFcjYAZr5iMbHVxrS3ufQzRqY7dPpJlMQGRSCIUVxJY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Jan 2025 13:36:36 GMT"
+          "Value": "Tue, 07 Jan 2025 16:36:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -36564,7 +36564,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-FrhpTESy98h0QtxtGSiO13O3aI29cwVjm6wDdRFdIFU="
+          "Value": "sha256-HFcjYAZr5iMbHVxrS3ufQzRqY7dPpJlMQGRSCIUVxJY="
         }
       ]
     },

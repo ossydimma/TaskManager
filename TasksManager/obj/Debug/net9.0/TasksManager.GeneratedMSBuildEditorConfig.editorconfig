@@ -68,10 +68,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksmanager/Components/Pages/MyTasks.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNeVRhc2tzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksmanager/Components/Pages/Signup.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaWdudXAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -95,3 +91,7 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksmanager/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-fky0ky6gcf
+
+[C:/Users/user/Desktop/DotNet_Projects/TasksManager/tasksmanager/Components/Pages/MyTasks.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNeVRhc2tzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-hsfcsc489g

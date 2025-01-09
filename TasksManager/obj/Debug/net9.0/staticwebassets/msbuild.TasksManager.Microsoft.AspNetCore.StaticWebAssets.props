@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>82y9tdddgc</Fingerprint>
-      <Integrity>sLUlr062Ko15uq3wJoXF1/I7GfIyNIO6gtu/9XW/SzU=</Integrity>
+      <Fingerprint>fzia6loqhn</Fingerprint>
+      <Integrity>m7g568fVtY1m0JttzUx71o1OORp+3d9akua2EgKzeVc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\app.css'))</OriginalItemSpec>
@@ -36,23 +36,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Scripts\interop.js'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TasksManager.ohtia7g7oj.bundle.scp.css'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TasksManager.27bohdmh5q.bundle.scp.css'))">
       <SourceType>Package</SourceType>
       <SourceId>TasksManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/TasksManager</BasePath>
-      <RelativePath>TasksManager.ohtia7g7oj.bundle.scp.css</RelativePath>
+      <RelativePath>TasksManager.27bohdmh5q.bundle.scp.css</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>Reference</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ProjectBundle</AssetTraitValue>
-      <Fingerprint>ohtia7g7oj</Fingerprint>
-      <Integrity>NBSPQiFkvmz5t2UBpwvapnuuBWmN3aqZsfQ0lccs4CM=</Integrity>
+      <Fingerprint>27bohdmh5q</Fingerprint>
+      <Integrity>rvNpt82vTBlDtSY+6apWrTX5BAygZRQcfb46FWCLSvo=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TasksManager.ohtia7g7oj.bundle.scp.css'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TasksManager.27bohdmh5q.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

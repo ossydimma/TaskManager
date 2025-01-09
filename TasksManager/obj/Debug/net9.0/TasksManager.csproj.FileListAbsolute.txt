@@ -128,8 +128,6 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\unlu0xluo6-eu7w3d5g1a.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\hqkqpfbl13-z9hhocoeoo.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\3gin1ph7ub-25o87uqmvr.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\i1gejntas9-d6fpl0xf1y.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\fwgk3gi68w-ohtia7g7oj.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -145,4 +143,7 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.pdb
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.genruntimeconfig.cache
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\ref\TasksManager.dll
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\puioqtxsg8-82y9tdddgc.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\scopedcss\Components\Pages\MyTasks.razor.rz.scp.css
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\puioqtxsg8-fzia6loqhn.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\i1gejntas9-i5d3286t0z.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\fwgk3gi68w-27bohdmh5q.gz

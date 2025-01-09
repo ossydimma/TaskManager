@@ -47,20 +47,20 @@
         </div>
         
     </section>
-    <section >
-        <QuickGrid Items="tasks" class="w-full">
-            @* <div class=""> *@
-                <PropertyColumn Property="item => item.Category" Title="Category"  />
-                <PropertyColumn Property="item => item.Title" Title="Task Name"  />
-                <PropertyColumn Property="item => item.Description" Title="Description" />
-                <PropertyColumn Property="item => item.Deadline" Title="Deadline"  />
-                <PropertyColumn Property="item => item.Status" Title="Status"  />
-            @* </div> *@
+     <section class="h-auto w-[98%] md:h-[69vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
+        <QuickGrid Items="tasks" class="w-full  ">
+            <div class="">
+                <PropertyColumn Property="item => item.Category" Title="Category" class="border border-gray-400 "  />
+                <PropertyColumn Property="item => item.Title" Title="Task Name" class="border border-gray-400 "   />
+                <PropertyColumn Property="item => item.TruncatedDescription" Title="Description" class="border border-gray-400 w-[30rem] py-4 "  />
+                <PropertyColumn Property="item => item.Deadline" Title="Deadline"  class="border border-gray-400 "  />
+                <PropertyColumn Property="item => item.Status" Title="Status" class="border border-gray-400 "  />
+            </div>
             
         </QuickGrid>
 
     </section>
-    @* <section>
+    @* <section class="h-auto w-[98%] md:h-[69vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
         <div class="  grid grid-cols-6 text-center bg-gray-300   ">
             @foreach (string table in new[] { "Category", "Task Name", "Description", "Deadline", "Status"})
             {
@@ -95,6 +95,15 @@
 
     }
 
+    private string TruncateDescription(string description)
+    {
+        if (description.Length > 100)
+        {
+            return description.Substring(0, 100) + "...";
+        }
+        return description;
+    }
+
     public void Dispose()
     {
         SharedData.OnChange -= StateHasChanged;
@@ -122,8 +131,9 @@
         new UserTasks
         {
             Title = "Shopping",
-            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
             Deadline = DateOnly.Parse("2023-06-10"), 
+            Category = "Work",
             Status = true
         },
         new UserTasks
@@ -138,6 +148,7 @@
             Title = "Take a nap",
             Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
             Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Personal",
             Status = true
         },
     }.AsQueryable();

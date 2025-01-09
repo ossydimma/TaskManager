@@ -1,0 +1,24 @@
+
+
+[b-hsfcsc489g] tr > td {
+    vertical-align: middle;
+}
+
+/* Style for table headers */
+[b-hsfcsc489g] th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+/* Style for table body rows */
+[b-hsfcsc489g] tbody tr {
+    height: 4rem;
+    background-color: #fff;
+    padding: 20px;
+}
+
+/* ::deep tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+} */
