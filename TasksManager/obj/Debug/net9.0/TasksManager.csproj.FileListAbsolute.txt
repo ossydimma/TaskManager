@@ -1,10 +1,3 @@
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.csproj.AssemblyReference.cache
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.AssemblyInfoInputs.cache
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.AssemblyInfo.cs
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.csproj.CoreCompileInputs.cache
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.sourcelink.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net9.0\TasksManager.Client.staticwebassets.runtime.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net9.0\TasksManager.Client.staticwebassets.endpoints.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net9.0\appsettings.Development.json
@@ -122,7 +115,15 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net9.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net9.0\TasksManager.Client.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\bin\Debug\net9.0\TasksManager.Client.pdb
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.AssemblyInfo.cs
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.sourcelink.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\scopedcss\Components\Pages\MyTasks.razor.rz.scp.css
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\scopedcss\bundle\TasksManager.styles.css
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\scopedcss\projectbundle\TasksManager.bundle.scp.css
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\unlu0xluo6-eu7w3d5g1a.gz
@@ -143,7 +144,6 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.pdb
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.genruntimeconfig.cache
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\ref\TasksManager.dll
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\scopedcss\Components\Pages\MyTasks.razor.rz.scp.css
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\puioqtxsg8-fzia6loqhn.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\i1gejntas9-i5d3286t0z.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\compressed\fwgk3gi68w-27bohdmh5q.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net9.0\compressed\puioqtxsg8-f4j8jalwgm.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net9.0\compressed\i1gejntas9-java3e1070.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net9.0\compressed\fwgk3gi68w-ojy84qi2if.gz

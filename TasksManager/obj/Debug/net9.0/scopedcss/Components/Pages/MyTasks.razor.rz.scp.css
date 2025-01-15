@@ -1,23 +1,64 @@
 
 
-[b-hsfcsc489g] tr > td {
-    vertical-align: middle;
-}
-
 /* Style for table headers */
 [b-hsfcsc489g] th {
     background-color: #f0f0f0;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 10px;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
 }
 
 /* Style for table body rows */
+/* ::deep tbody {
+    height: 20rem;
+    overflow-y: scroll
+} */
 [b-hsfcsc489g] tbody tr {
-    height: 4rem;
+    height: 5rem;
     background-color: #fff;
-    padding: 20px;
 }
+[b-hsfcsc489g] .tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+[b-hsfcsc489g] .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 2;
+    bottom: 100%; /* Position the tooltip above the text */
+    left: 50%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+[b-hsfcsc489g] .tooltip-container:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+[b-hsfcsc489g] .tooltip .tooltiptext ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+[b-hsfcsc489g] .tooltip .tooltiptext ul li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+[b-hsfcsc489g] .tooltip .tooltiptext ul li:hover {
+    background-color: #555;
+}
+
 
 /* ::deep tbody tr:nth-child(even) {
     background-color: #f9f9f9;

@@ -5,7 +5,7 @@ namespace TasksManager.Models;
 public class UserTasks
 {
     [Key]
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     [Required]
     public string? Category { get; set; }
@@ -20,7 +20,7 @@ public class UserTasks
     public bool Status { get; set; } = false;
 
     [NotMapped]
-    public string TruncatedDescription => Description.Length > 150 ? Description.Substring(0, 100) + "..." : Description;
+    public string TruncatedDescription => Description.Length > 100 ? Description.Substring(0, 100) + "..." : Description;
 
     // [ForeignKey("UserId")]
     // public User User { get; set; }

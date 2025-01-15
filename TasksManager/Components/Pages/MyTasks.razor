@@ -5,7 +5,7 @@
 @implements IDisposable
 
 <main class="text-xs xs:text-sm md:text-[1rem] border-gray-500 border-t-2 border-dotted"> 
-    <section class="flex justify-between items-center px-4 mt-8 -mb-2">
+    <section class="flex justify-between items-center px-4 mt-5 lmd:mt-8 -mb-2">
         @* <h1 class="font-bold font-serif text-2xl">My Tasks</h1> *@
         <div class=" flex gap-2 items-center text-sm">
             <div class="py-2 px-4 bg-black text-white rounded-xl cursor-pointer">All Tasks</div>
@@ -47,17 +47,47 @@
         </div>
         
     </section>
-     <section class="h-auto w-[98%] md:h-[69vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
-        <QuickGrid Items="tasks" class="w-full  ">
+     <section class="h-auto w-[98%] md:h-[70vh] overflow-hidden pt-5 mx-2  mb-[3rem] ">
+         
+        <QuickGrid Items="tasks" class="w-full h-[90%] " Pagination="pagination">
             <div class="">
-                <PropertyColumn Property="item => item.Category" Title="Category" class="border border-gray-400 "  />
+                <PropertyColumn Property="item => item.Category" Title="Category" class="border border-gray-400 text-center"  />
                 <PropertyColumn Property="item => item.Title" Title="Task Name" class="border border-gray-400 "   />
-                <PropertyColumn Property="item => item.TruncatedDescription" Title="Description" class="border border-gray-400 w-[30rem] py-4 "  />
-                <PropertyColumn Property="item => item.Deadline" Title="Deadline"  class="border border-gray-400 "  />
-                <PropertyColumn Property="item => item.Status" Title="Status" class="border border-gray-400 "  />
+                <PropertyColumn Property="item => item.TruncatedDescription" Title="Description" class=" text-[10px] xs:text-xs md:text-sm description border border-gray-400 w-[30rem] py-4 "  />
+                <PropertyColumn Property="item => item.Deadline" Title="Deadline"  class="border border-gray-400  text-center"  />
+                <PropertyColumn Property="item => item.Status" Title="Status" class="border border-gray-400 text-center"  />
             </div>
+
+
+            <TemplateColumn Context="item" title="More" class= " tooltip-container border border-gray-400 cursor-pointer">
+                <div class="tooltip">
+                    <span>Options</span>
+                    <div class="tooltiptext">
+                        <ul>
+                            <li @onclick="() => ViewDetails(item.Id)">Details</li>
+                            <li @onclick="() => EditTask(item.Id)">Edit</li>
+                            <li >Delete</li>
+                        </ul>
+                    </div>
+                </div>
+            </TemplateColumn>
+
+            @* <TemplateColumn Context="item" class="border border-gray-400">
+                 <ul class=" bg-white text-black w-fit  list-disc list-inside font-mono font-medium rounded-2xl">
+                    <li class="hover:bg-black hover:text-white rounded-xl px-4 py-1 cursor-pointer" >Details</li>
+                    <li class="hover:bg-black hover:text-white rounded-xl px-4 py-1 cursor  -pointer" >Edit </li>
+                    <li class="hover:bg-red-600 hover:text-white rounded-xl px-4 py-1 cursor-pointer">Delete</li>
+                </ul>
+            </TemplateColumn> *@
+           
             
         </QuickGrid>
+
+        <div class="mb-5">
+            <Paginator State="pagination"/>
+        </div>
+
+
 
     </section>
     @* <section class="h-auto w-[98%] md:h-[69vh]  overflow-hidden pt-5 mx-2  mb-[3rem] ">
@@ -84,6 +114,8 @@
 </main>
 
 @code {
+
+    private PaginationState pagination = new PaginationState{ ItemsPerPage = 4 };
     protected override void OnInitialized()
     {
         SharedData.OnChange += StateHasChanged;
@@ -109,14 +141,35 @@
         SharedData.OnChange -= StateHasChanged;
     }
 
-    @* public class TaskItem
+    private string GetActiveClass(bool isHovered)
     {
-        public string Type { get; set; } = string.Empty;
-        public string TaskName { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string Deadline { get; set; } = string.Empty;
-        public string Status { get; set; } = string.Empty;
-    } *@
+        return isHovered ? "visible" : "hidden";
+    }
+
+    private void ViewDetails(Guid id)
+    {
+        UserTasks? task = tasks.FirstOrDefault(t => t.Id == id);
+        if (task != null)
+        {
+            Console.WriteLine(task.Title);
+        }
+        else
+        {
+            Console.WriteLine($"{id} Task not found");
+        }
+    }
+    private void EditTask(Guid id)
+    {
+        UserTasks? task = tasks.FirstOrDefault(t => t.Id == id);
+        if (task != null)
+        {
+            Console.WriteLine(task.Id);
+        }
+        else
+        {
+            Console.WriteLine($"{id} Task not found");
+        }
+    }
 
     private IQueryable<UserTasks> tasks = new []
     {
@@ -131,7 +184,7 @@
         new UserTasks
         {
             Title = "Shopping",
-            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Description = "Tue hede are a you doing now cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
             Deadline = DateOnly.Parse("2023-06-10"), 
             Category = "Work",
             Status = true
@@ -141,6 +194,87 @@
             Title = "Take a nap",
             Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
             Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Other",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Personal",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Other",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Personal",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Other",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Personal",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Other",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Personal",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Other",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Personal",
+            Status = true
+        },
+        new UserTasks
+        {
+            Title = "Take a nap",
+            Description = "Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd Tue hede cjdndm jfjfkr ifdjfk jhdnd jhdd",
+            Deadline = DateOnly.Parse("2023-06-10"),
+            Category = "Other",
             Status = true
         },
         new UserTasks
@@ -152,6 +286,8 @@
             Status = true
         },
     }.AsQueryable();
+
+
 
     @* private TaskItem[] AllTasks = new[]
     {
