@@ -7,7 +7,7 @@
 @if (SharedData.ShowCreateTask)
 {
     <main
-        class=" pt-4 pb-2 px-10 mx-2 absolute top-3 md:top-5 left-1/2 transform -translate-x-1/2 z-10 bg-white shadow-xl h-[33.5rem] md:h-[95%] w-[90%] md:w-[50%] rounded-2xl">
+        class=" pt-2 pb-2 px-10 mx-2 absolute top-3 md:top-5 left-1/2 transform -translate-x-1/2 z-10 bg-white shadow-xl h-[33.5rem] md:h-[95%] w-[90%] md:w-[50%] rounded-2xl">
         <div class=" w-[90%] px-4 py-2 border-b-2 border-dashed border-gray-500 ">
             <div class="cursor-pointer" @onclick="HandleCancel">
                 <svg class="w-8 md:w-10 ml-auto text-right" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
         
         <div class=" w-[90%]  h-[80%] mx-auto overflow-y-scroll">
             <EditForm Model="task" FormName="create" Enhance method="post" 
-                class="flex flex-col gap-4 mt-5 md:mt-8 w-[90%] "
+                class="flex flex-col gap-3 mt-5 md:mt-8 w-[90%] "
             >
                 <DataAnnotationsValidator />
                 <ValidationSummary role="alert" class="text-red-500" />

@@ -144,6 +144,6 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.pdb
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\TasksManager.genruntimeconfig.cache
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\tasksmanager\obj\Debug\net9.0\ref\TasksManager.dll
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net9.0\compressed\puioqtxsg8-f4j8jalwgm.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net9.0\compressed\i1gejntas9-java3e1070.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net9.0\compressed\fwgk3gi68w-ojy84qi2if.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager\obj\Debug\net9.0\compressed\puioqtxsg8-h8qb96lbux.gz
