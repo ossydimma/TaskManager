@@ -59,6 +59,24 @@
     background-color: #555;
 }
 
+.checkBox-tooltip {
+    width: 70%;
+    top: -8px;
+    left: 0;
+    visibility: hidden;
+    transition: left 2s ease
+}
+
+.checkBox-conatiner:hover .checkBox-tooltip {
+    /* width: 70%; */
+    left: 6rem;
+    visibility: visible;
+    opacity: 1;
+    /* transform: translateX(100%); */
+}
+
+
+
 
 /* ::deep tbody tr:nth-child(even) {
     background-color: #f9f9f9;

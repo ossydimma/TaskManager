@@ -12,7 +12,7 @@ public class UserTasks
 
     [Required]
     [StringLength(50, MinimumLength = 3)]
-    public string? Title { get; set; }
+    public string Title { get; set; } = string.Empty;
 
     [Required]
     public string Description { get; set; } = string.Empty;
