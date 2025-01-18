@@ -83,7 +83,7 @@
                         <ul>
                             <li @onclick="() => ViewDetails(item.Id)">Details</li>
                             <li @onclick="() => EditTask(item.Id)">Edit</li>
-                            <li >Delete</li>
+                            <li @onclick="() => DeleteTask(item.Id)" >Delete</li>
                         </ul>
                     </div>
                 </div>
@@ -129,46 +129,57 @@
                 }
                 else
                 {
-                    @if (Option is "Details")
+                    @if (Option is "Details" or "Delete")
                     {
                         <dl class="flex flex-col gap-2 px-4 @(SelectedTask.Description.Length > 200 ? "mt-[1rem]" : "mt-[2rem]")">
                         
-                            <div class="flex items-center  gap-[7rem] border p-3">
-                                <dt class="font-bold text-lg">Task Name :</dt>
-                                <dd class="font-medium">@SelectedTask.Title</dd>
+                            <div class="flex items-center  gap-[7rem] border border-gray-300 p-3">
+                                <dt class="font-bold font-mono text-lg">Task Name:</dt>
+                                <dd class="">@SelectedTask.Title</dd>
                             </div>
 
-                            <div class="flex gap-[7rem] border p-3">
-                                <dt class="font-bold text-lg">Description:</dt>
-                                <dd class="font-medium">@SelectedTask.Description</dd>
+                            <div class="flex gap-[5.5rem] border border-gray-300  p-3">
+                                <dt class="font-bold font-mono text-lg">Description:</dt>
+                                <dd class="">@SelectedTask.Description</dd>
                             </div>
 
-                            <div class="flex items-center  gap-[8.5rem] border p-3">
-                                <dt class="font-bold text-lg">Deadline :</dt>
-                                <dd class="font-medium">@SelectedTask.Deadline</dd>
+                            <div class="flex items-center  gap-[7.5rem] border border-gray-300  p-3">
+                                <dt class="font-bold font-mono text-lg">Deadline:</dt>
+                                <dd class="">@SelectedTask.Deadline</dd>
                             </div>
 
-                            <div class="flex items-center  gap-[8rem] border p-3  ">
-                                <dt class="font-bold text-lg">Category :</dt>
-                                <dd class="font-medium ">@SelectedTask.Category</dd>
+                            <div class="flex items-center  gap-[7.5rem] border border-gray-300  p-3  ">
+                                <dt class="font-bold font-mono text-lg">Category:</dt>
+                                <dd class=" ">@SelectedTask.Category</dd>
                             </div>
 
-                            <div class="flex items-center  gap-[9.5rem] border p-3">
-                                <dt class="font-bold text-lg">Status :</dt>
-                                <dd class="font-medium">@(SelectedTask.Status == true ? "Completed" : "Pending")</dd>
+                            <div class="flex items-center  gap-[9rem] border border-gray-300  p-3">
+                                <dt class="font-bold font-mono text-lg">Status:</dt>
+                                <dd class="">@(SelectedTask.Status == true ? "Completed" : "Pending")</dd>
                             </div>
 
                         </dl>
-                        <div class="mt-4 flex items-center justify-between mr-4 " >
-                            <p class="underline text-red-500 cursor-pointer">Delete Task</p>
-                            <p class="text-blue-400 underline cursor-pointer " @onclick="NavigateToEditTask" >Edit Task</p>
-                        </div>
+                        @if (Option == "Details")
+                        {
+                            <div class="mt-4 flex items-center justify-between mr-4 " >
+                                <p class="underline text-red-500 cursor-pointer" @onclick="NavigateToDeleteTask">Delete Task</p>
+                                <p class="text-blue-400 underline cursor-pointer " @onclick="NavigateToEditTask" >Edit Task</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="flex mt-4 mr-4 justify-end">
+                                <button class="bg-red-600 p-3  text-white w-[8rem] text-center reounded-xl" >Delete</button>
+                            </div>
+                        }
+                        
+
                     }
                     else if (Option is "Edit")
                     {
                         <div class="  mx-auto ">
                             <EditForm Model="editTasksDto" OnValidSubmit="SaveChanges" FormName="Edit" Enhance method="put" 
-                                class="flex flex-col gap-4 mt-5 md:mt-6 w-[90%] "
+                                class="flex flex-col gap-3 mt-5 md:mt-6 w-[90%] "
                             >
                                 <DataAnnotationsValidator />
                                 <ValidationSummary role="alert" class="text-red-500" />
@@ -180,7 +191,7 @@
                                 </divF>
 
                                 <div class="flex justify-between items-center">
-                                    <div class="flex flex-col @(editTasksDto.Status == true ? "w-[100%]" : "w-[45%]") ">
+                                    <div class="flex flex-col @(SelectedTask.Status == true ? "w-[100%]" : "w-[45%]") ">
                                         <label for="deadline" class="text-lg font-medium">Project Deadline</label>
                                         <InputDate id="deadline" @bind-Value="editTasksDto.Deadline" placeholder="DD/MM/YYYY"
                                             class="border border-gray-600 rounded-lg  outline-none py-2 px-4 w-full" />
@@ -209,8 +220,9 @@
                                 </div>
                                 
                                 <div>
+                                    <label for="description" class="text-lg font-medium ">Description</label>
                                     <InputTextArea id="description" @bind-Value="editTasksDto.Description"  placeholder="Enter a description"
-                                    class="border border-gray-600 rounded-lg outline-none py-2 px-4 w-[100%] h-24" />
+                                        class="border border-gray-600 rounded-lg outline-none py-2 px-4 w-[100%] h-24" />
                                     <ValidationMessage class="text-red-500" For="() => editTasksDto.Description" />
                                 </div>
                             
@@ -255,6 +267,7 @@
     protected override void OnInitialized()
     {
         SharedData.OnChange += StateHasChanged;
+        @* UserTasks task = new UserTasks(); *@
     }
 
     private void HandleCreateTaskDisplay()
@@ -303,6 +316,22 @@
         }
     }
 
+    private void DeleteTask(Guid id)
+    {
+        UserTasks? task = tasks.FirstOrDefault(t => t.Id == id);
+        if (task != null)
+        {
+            DisplayMoreOptions = true;
+            SelectedTask = task;
+            Option = "Delete";
+        }
+        else
+        {
+            Console.WriteLine($"{id} Task not found");
+        }
+       
+    }
+
     private void SaveChanges()
     {
         if (SelectedTask != null)
@@ -321,6 +350,10 @@
     private void NavigateToEditTask()
     {
         Option = "Edit";
+    }
+    private void NavigateToDeleteTask()
+    {
+        Option = "Delete";
     }
 
     public void Dispose()

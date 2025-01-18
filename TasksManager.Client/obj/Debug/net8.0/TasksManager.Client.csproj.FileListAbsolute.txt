@@ -1031,6 +1031,6 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\refint\TasksManager.Client.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.pdb
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\ref\TasksManager.Client.dll
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\q1265knk41-x5m4o4mu63.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\ymrfclvpdl-mxzn87yt2v.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\igfyc8ena0-e05s2w7ebf.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\q1265knk41-q83pofww86.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\ymrfclvpdl-zatswxve1q.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\igfyc8ena0-qhjzm7rsg1.gz
