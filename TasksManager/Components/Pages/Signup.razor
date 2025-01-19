@@ -17,15 +17,15 @@
                     required />
             </div>
 
-            <div class="flex flex-col gap-2">
+            @* <div class="flex flex-col gap-2">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" class="outline-none border py-1 px-3 rounded-lg"
                     required />
-            </div>
+            </div> *@
 
             <div class="flex flex-col">
                 <label for="password">Password:</label>
-                <div class="border rounded-lg flex ">
+                <div class="border rounded-lg flex bg-white ">
                     <input type="@PasswordType" id="password" name="password"
                         class="outline-none py-1 pl-3 w-[88%] rounded-lg" required />
                     <EyeIcon ShowPassword="@ShowPassword" IconStyles=" mt-1" HandlePasswordType="@HandlePasswordType" />
@@ -35,7 +35,7 @@
 
             <div class="flex flex-col">
                 <label for="ConfirmPassword">Confirm Password:</label>
-                <div class="border rounded-lg flex ">
+                <div class="border rounded-lg flex bg-white">
                     <input type="@ConfirmPasswordType" id="ConfirmPassword" name="ConfirmPassword"
                         class="outline-none py-1 pl-3 w-[88%] rounded-lg" required />
                     <EyeIcon ShowPassword="@ShowConfirmPassword" IconStyles="mt-1" HandlePasswordType="@HandleConfirmPasswordType" />
@@ -43,7 +43,7 @@
                 
             </div>
 
-            <button class="bg-[#5577FF] text-[1rem] text-white py-2 mt-1 w-[100%] rounded-lg" onclick="gotohome()"
+            <button class="bg-[#5577FF] text-[1rem] text-white py-2 mt-3 w-[100%] rounded-lg" onclick="gotohome()"
                 type="submit">
                 Sign up
             </button>

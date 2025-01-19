@@ -1,26 +1,34 @@
 ﻿@* @rendermode RenderMode.InteractiveServer *@
 @page "/login"
+@using TasksManager.Models
+@using TasksManager.DTO
 
 <PageTitle>login</PageTitle>
 
 <div class="w-screen h-screen flex justify-center items-center">
     <div class=" w-[60%] sm:w-[50%] md:w-[40%] lg:w-[28%] rounded-[0.8rem] px-4 py-8 border border-gray-300 font-serif">
         <h2 class=" text-2xl text-[#5577FF] font-semibold text-center">Login</h2>
-        <form action="#" method="post" class="relative flex flex-col gap-3 mt-10">
+        <EditForm Model="loginDto" action="#" method="post" class="relative flex flex-col gap-3 mt-10">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-red-500" />
             <div class="flex flex-col gap-2">
-                <label for="username">Username or Email:</label>
-                <input type="text" id="username" name="username" class="outline-none border py-1 px-3 rounded-lg"
-                    required />
+                <label for="username">Email:</label>
+                <InputText @bind-Value="loginDto.Email" id="username" name="username" class="outline-none border py-1 px-3 rounded-lg" />
+                <ValidationMessage For="@(() => loginDto.Email)" class="text-red-500"/>
             </div>
 
             <div class="flex flex-col">
                 <label for="password">Password:</label>
-                <input type="@PasswordType" id="password" name="password"
-                    class="outline-none border py-1 pl-3 pr-10 rounded-lg" required />
+                <div class="border w-full  pl-3 pr-5 rounded-lg bg-white flex items-center justify-between">
+                    <InputText @bind-Value="loginDto.Password" type="@PasswordType" id="password" name="password" class="outline-none py-1 w-[88%]  "/>
+                     @* ICON *@ 
+                    <EyeIcon ShowPassword="@ShowPassword" IconStyles=" " HandlePasswordType="@HandlePasswordType" />
+                </div>
+                
+                <ValidationMessage For="@(() => loginDto.Password)" class="text-red-500"/>
             </div>
 
-            @* ICON *@ 
-            <EyeIcon ShowPassword="@ShowPassword" IconStyles="top-[6.7rem] right-4" HandlePasswordType="@HandlePasswordType" />
+           
 
             <div class="text-sm mb-1 flex items-center justify-between">
                 <div style="display: flex; gap: 5px">
@@ -32,11 +40,11 @@
                 </div>
             </div>
 
-            <button class="bg-[#5577FF] text-[1rem] text-white py-2 w-[100%] rounded-lg" onclick="gotohome()"
+            <button class="bg-[#5577FF] text-[1rem] text-white py-2 w-[100%] rounded-lg"
                 type="submit">
                 Log In
             </button>
-        </form>
+        </EditForm>
 
         @* external-auth *@
         <div class="border border-gray-300 w-[100%] py-2  rounded-lg flex justify-center items-center gap-7 my-4 cursor-pointer">
@@ -73,6 +81,8 @@
 </div>
 
 @code {
+    private LoginDto loginDto = new();
+    private User user = new();
     private bool ShowPassword = false;
     private string PasswordType { get; set; } = "password";
 
