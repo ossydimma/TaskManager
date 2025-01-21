@@ -1,49 +1,53 @@
-@* @rendermode RenderMode.InteractiveServer *@
 @page "/signup"
-@* @using Microsoft.AspNetCore.Components.WebAssembly.Authentication *@
 @using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.EntityFrameworkCore
+@using TasksManager.Models
+@using TasksManager.DTO
+@using TasksManager.Hasher
+@using TasksManager.Data
+@inject TasksManagerDbContext DbContext
 @inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="w-screen h-screen flex justify-center items-center">
     <div class=" w-[60%] sm:w-[50%] md:w-[40%] lg:w-[28%] rounded-[0.8rem] px-4 py-5 border border-gray-300 font-serif">
         <h2 class=" text-2xl text-[#5577FF] font-semibold text-center">Sign up</h2>
-        <form action="#" method="post" class="relative flex flex-col gap-2 mt-5">
+        <EditForm Model="signUpDto" method="post" FormName="SignIn" OnValidSubmit="RegisterUser" class="relative flex flex-col gap-2 mt-5">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-red-500" />
+
             <div class="flex flex-col gap-2">
                 <label for="fullName">Full Name:</label>
-                <input type="text" id="fullName" name="fullName" class="outline-none border py-1 px-3 rounded-lg"
-                required />
+                <InputText @bind-Value="signUpDto.FullName" id="fullName" name="fullName" class="outline-none border py-1 px-3 rounded-lg" />
+                <ValidationMessage For="@(() => signUpDto.FullName)" class="text-red-500" />
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="outline-none border py-1 px-3 rounded-lg"
-                required />
+                <InputText @bind-Value="signUpDto.Email" type="email" id="email" name="email" class="outline-none border py-1 px-3 rounded-lg" />
+                <ValidationMessage For="@(() => signUpDto.Email)" class="text-red-500" />
             </div>
 
-            @* <div class="flex flex-col gap-2">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" class="outline-none border py-1 px-3 rounded-lg"
-                    required />
-            </div> *@
 
             <div class="flex flex-col">
                 <label for="password">Password:</label>
                 <div class="border rounded-lg flex bg-white ">
-                    <input type="@PasswordType" id="password" name="password"
+                    <InputText @bind-Value="signUpDto.Password" type="@PasswordType" id="password" name="password"
                     class="outline-none py-1 pl-3 w-[88%] rounded-lg" required />
                     <EyeIcon ShowPassword="@ShowPassword" IconStyles=" mt-1" HandlePasswordType="@HandlePasswordType" />
                 </div>
+                <ValidationMessage For="@(() => signUpDto.Password)" class="text-red-500" />
 
             </div>
 
             <div class="flex flex-col">
                 <label for="ConfirmPassword">Confirm Password:</label>
                 <div class="border rounded-lg flex bg-white">
-                    <input type="@ConfirmPasswordType" id="ConfirmPassword" name="ConfirmPassword"
+                    <InputText @bind-Value="signUpDto.ConfirmPassword" type="@ConfirmPasswordType" id="ConfirmPassword" name="ConfirmPassword"
                     class="outline-none py-1 pl-3 w-[88%] rounded-lg" required />
                     <EyeIcon ShowPassword="@ShowConfirmPassword" IconStyles="mt-1" HandlePasswordType="@HandleConfirmPasswordType" />
                 </div>
+                <ValidationMessage For="@(() => signUpDto.ConfirmPassword)" class="text-red-500" />
 
             </div>
 
@@ -53,7 +57,7 @@
                 Sign up
             </button>
 
-        </form>
+        </EditForm>
 
         @* external-auth *@
         @* <a href="/signin-google"> *@
@@ -98,6 +102,46 @@
     private string ConfirmPasswordType { get; set;} = "password";
     private bool ShowPassword { get; set;} = false;
     private bool ShowConfirmPassword { get; set;} = false;
+
+    private SignUpDto signUpDto { get; set; } = new();
+
+    private User User { get; set; } = new();
+
+    private async Task RegisterUser()
+    {
+
+        Hasher.CreateValueHash(signUpDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
+
+        User.FullName = signUpDto.FullName;
+        User.Email = signUpDto.Email;
+        User.PasswordHash = passwordHash;
+        User.PasswordSalt = passwordSalt;
+
+
+        DbContext.Users.Add(User);
+        int affect = await DbContext.SaveChangesAsync();
+        if (affect > 0)
+        {
+            Navigation.NavigateTo("login");
+        }
+        else
+        {
+            Console.WriteLine("Error");
+        }
+
+        @* using var context = DbFactory.CreateDbContext();
+        context.Users.Add(User);
+        int affect = await context.SaveChangesAsync();
+        if (affect > 0)
+        {
+            Navigation.NavigateTo("login");
+        }
+        else
+        {
+            Console.WriteLine("Error");
+        } *@
+
+    }
 
 
     private async Task GoogleAuthentication()

@@ -30,6 +30,10 @@ namespace TasksManager.DTO
         [RegularExpression(@"^(?=.*[A-Z])(?=.*\d).{6,}$", ErrorMessage = "Password must be at least 6 characters long and contain at least one capital letter and a number.")]
         public string Password { get; set; } = string.Empty;
 
+        [Required]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string ConfirmPassword { get; set; } = string.Empty;
+
     }
     
 }

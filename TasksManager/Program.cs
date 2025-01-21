@@ -7,13 +7,18 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("default") 
+var connectionString = builder.Configuration.GetConnectionString("TasksManagerDB") 
     ?? throw new NullReferenceException("Connection string 'default' not found in configuration");
 
 builder.Services.AddDbContext<TasksManagerDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });
+
+// builder.Services.AddDbContextFactory<TasksManagerDbContext>(options =>
+// {
+//     options.UseSqlServer(connectionString);
+// });
 
 
 builder.Services.AddSingleton<SharedDataService>();
