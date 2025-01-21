@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace TasksManager.Models
 {
@@ -19,6 +20,11 @@ namespace TasksManager.Models
         public byte[] PasswordHash { get; set; } = null!;
         public byte[] PasswordSalt { get; set; } = null!;
 
-        public string? Token { get; set; }
+        // public string? Token { get; set; }
+
+        [JsonIgnore]
+        public virtual List<UserDocument> UserDocument { get; set; } = [];
+        [JsonIgnore]
+        public virtual List<UserTasks> UserTasks { get; set; } = [];
     }
 }

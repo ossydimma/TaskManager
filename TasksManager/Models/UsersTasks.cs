@@ -22,8 +22,8 @@ public class UserTasks
     [NotMapped]
     public string TruncatedDescription => Description.Length > 100 ? Description.Substring(0, 100) + "..." : Description;
 
-    // [ForeignKey("UserId")]
-    // public User User { get; set; }
+    [ForeignKey("UserId")]
+    public User User { get; set; } = null!;
 
-    // public int UserId { get; set; }
+    public Guid UserId { get; set; }
 }

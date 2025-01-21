@@ -1,31 +1,31 @@
 @page "/documentation"
 @implements IDisposable
 @inject SharedDataServices.SharedDataService SharedData
+@using TasksManager.Models
 
 @* <h2>Documentation</h2> *@
 <main class="flex justify-between items-center flex-col gap-4 md:gap-2 md:flex-row h-[85%] pt-5 border-gray-500 border-t-2 border-dotted">
     
     <section class="w-[94%] md:w-[60%] h-[80vh] sm:h-[95vh] md:h-full mx-3 md:mx-4 shadow-2xl rounded-2xl border py-2 md:py-6 px-2 md:px-6 relative">
-
-        <div class="flex items-center justify-between">
-            <input type="text" placeholder="Enter Title" readonly="@IsReadOnly" @bind="@ContentTitle"   class="w-[100%] outline-none border-b border-gray-700  py-2 px-4 bg-transparent font-serif font-bold ">
-        </div>
-
-        <div class=" h-[58%] md:h-[78%] ">
-            <textarea name="Document" placeholder="Start Documenting..." readonly="@IsReadOnly" @bind="@ContentBody"  class="w-full h-full p-4 bg-transparent outline-none "></textarea>
-        </div>
-
-        @if (Feedback)
-        {
-            <div class=" bg-red-500  border w-[80%] h-fit py-10 flex flex-col gap-4 justify-center items-center rounded-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ">
-                <p class=" text-2xl text-white font-mono font-semibold">@FeedbackText</p>
-                <button class="bg-white text-black hover:text-red-600 py-3 px-10 rounded-2xl font-bold hover:scale-90 transition-transform duration-300" @onclick="()=> Feedback = !Feedback ">Ok</button>
-            </div>
-        }
         
+        <EditForm Model="Documents" class="h-full w-full">
+            <div class="flex items-center justify-between">
+                <InputText  placeholder="Enter Title" readonly="@IsReadOnly" @bind-Value="@ContentTitle"   class="w-[100%] outline-none border-b border-gray-700  py-2 px-4 bg-transparent font-serif font-bold " />
+            </div>
 
-        <div class=" flex justify-end mt-4">
-            @if(IsReadOnly)
+            <div class=" h-[58%] md:h-[78%]">
+                <InputTextArea  placeholder="Start Documenting..." readonly="@IsReadOnly" @bind-Value="@ContentBody"  class="w-full h-full p-4 bg-transparent outline-none " />
+            </div>
+            <div class=" flex justify-end mt-4">
+                @if (!IsReadOnly)
+                {
+                    <button class="  py-2 px-8 text-white rounded-xl hover:text-black hover:bg-white hover:border border-black bg-black cursor-pointer ">Discard</button>
+                    <button type="submit" 
+                        class=" ml-auto py-2 px-8  text-white rounded-xl  hover:text-black hover:bg-white hover:border border-black bg-black cursor-pointer "
+                        @onclick="HandleSave"
+                    >Save</button>
+                }
+                else
             {
                 <svg 
                     class="w-8 cursor-pointer " viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -52,23 +52,27 @@
                 </svg>
 
             }
-            else 
-            {
 
-                <button type="submit"  class="  py-2 px-8 text-white rounded-xl hover:text-black hover:bg-white hover:border border-black bg-black cursor-pointer ">Discard</button>
-                <button type="submit" 
-                    class=" ml-auto py-2 px-8  text-white rounded-xl  hover:text-black hover:bg-white hover:border border-black bg-black cursor-pointer "
-                    @onclick="HandleSave"
-                >Save</button>
-               
-            }
-                    
-        </div>
+            </div>
+           
+            
+        </EditForm>
+
+        
+
+        @if (Feedback)
+        {
+            <div class=" bg-red-500  border w-[80%] h-fit py-10 flex flex-col gap-4 justify-center items-center rounded-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ">
+                <p class=" text-2xl text-white font-mono font-semibold">@FeedbackText</p>
+                <button class="bg-white text-black hover:text-red-600 py-3 px-10 rounded-2xl font-bold hover:scale-90 transition-transform duration-300" @onclick="()=> Feedback = !Feedback ">Ok</button>
+            </div>
+        }
+        
 
     </section>
     
     <section class=" flex flex-col  gap-7 px-2 overflow-y-scroll h-full w-full md:w-[38%] ">
-        @foreach(Document? item in Documents)
+        @foreach(UserDocument? item in Documents)
         {
             <div 
                 class="flex flex-col justify-center  w-full h-[30rem] border shadow-xl rounded-2xl px-4 md:px-6 py-8 bg-black text-white relative cursor-pointer"
@@ -77,7 +81,7 @@
             >
 
                 <h1 class="flex justify-between items-center font-mono font-bold text-2xl md:text-lg lmd:text-2xl">@item.Title</h1>
-                <p class="text-xs md:text-xs lmd:text-sm mt-1 mb-3 font-mono font-semibold pl-1">@item.Date</p>
+                <p class="text-xs md:text-xs lmd:text-sm mt-1 mb-3 font-mono font-semibold pl-1">@item.FormattedDate</p>
                 <p class="text-[1rem] md:text-sm lmd:text-[1rem] px-3 font-serif">@item.HalvedContent</p>
 
                 <ul class="@GetActiveClass(item.IsHovered) absolute top-14 right-1 bg-white text-black w-fit p-2 list-disc list-inside font-mono font-medium rounded-2xl">
@@ -133,7 +137,7 @@
 
     private void HandleDisplayMore(Guid id)
     {
-        Document? item = Documents.FirstOrDefault(i => i.Id == id);
+        UserDocument? item = Documents.FirstOrDefault(i => i.Id == id);
         if (item != null)
         {
            item.IsHovered = true;
@@ -148,7 +152,7 @@
     private void HandleHideMore(Guid id)
     {
 
-        Document? item = Documents.FirstOrDefault(i => i.Id == id);
+        UserDocument? item = Documents.FirstOrDefault(i => i.Id == id);
         if (item != null)
         {
            item.IsHovered = false;
@@ -163,7 +167,7 @@
     private void ReadDocument(Guid id)
     {
         StateHasChanged();
-        Document? item = Documents.FirstOrDefault(i => i.Id == id);
+        UserDocument? item = Documents.FirstOrDefault(i => i.Id == id);
         if(item != null)
         {
             ContentTitle = item.Title;
@@ -181,7 +185,7 @@
     private void EditDocument(Guid id)
     {
         StateHasChanged();
-        Document? item = Documents.FirstOrDefault(i => i.Id == id);
+        UserDocument? item = Documents.FirstOrDefault(i => i.Id == id);
         if(item != null)
         {
             ContentTitle = item.Title;
@@ -207,48 +211,22 @@
         SharedData.OnChange -= StateHasChanged;
     }
 
-    public class Document 
-    {
-        public Guid Id {get; set;}
-        public string Title { get; set;} = string.Empty;
-        public string Date { get; set;} = string.Empty;
-        public string Content { get; set;} = string.Empty;
-        public bool IsHovered { get; set; } = false;
-        public string HalvedContent { 
-            get
-            {
-               int MaxLength = 200;
-                if (Content.Length > MaxLength)
-                {
-                    return Content.Substring(0, MaxLength) + "...";
-                } 
-                return Content;
-            }
-        }
-        
-    }
 
-    public Document[] Documents = new []
+    public UserDocument[] Documents = new []
     {
-        new Document
+        new UserDocument
         {
-            Id = Guid.NewGuid(),
-            Title = "Aglorthim of Calculation",
-            Date = new DateTime(2024, 12, 08).ToString("dd MMMM yyyy"),
+            Title = "Aglorthim of ",
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         },
-        new Document
+        new UserDocument
         {
-            Id = Guid.NewGuid(),
             Title = "Aglorthim of Calculation",
-            Date = new DateTime(2024, 12, 08).ToString("dd MMMM yyyy"),
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         },
-        new Document
+        new UserDocument
         {
-            Id = Guid.NewGuid(),
-            Title = "Aglorthim of Calculation",
-            Date = new DateTime(2024, 12, 08).ToString("dd MMMM yyyy"),
+            Title = "Aglorthim  Calculation",
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         }
         

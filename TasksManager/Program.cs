@@ -1,7 +1,20 @@
 using TasksManager.Components;
 using TasksManager.SharedDataServices;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using TasksManager.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("default") 
+    ?? throw new NullReferenceException("Connection string 'default' not found in configuration");
+
+builder.Services.AddDbContext<TasksManagerDbContext>(options =>
+{
+    options.UseSqlServer(connectionString);
+});
+
 
 builder.Services.AddSingleton<SharedDataService>();
 
@@ -12,6 +25,22 @@ builder.Services.AddRazorComponents()
     
 builder.Services.AddServerSideBlazor()
     .AddCircuitOptions(options => options.DetailedErrors = true);
+
+// Add Authentication services
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+.AddCookie()
+.AddGoogle(options => 
+{
+    options.ClientId =  builder.Configuration["Authentication:Google:ClientId"]!;
+    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
+    options.Scope.Add("email");
+    options.Scope.Add("profile");
+});
     
     
 builder.Services.AddQuickGridEntityFrameworkAdapter();
@@ -33,6 +62,9 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
