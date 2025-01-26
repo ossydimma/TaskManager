@@ -1017,6 +1017,9 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\v1n3pmkp7j-tptq2av103.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\yppk609hci-lfu7j35m59.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\lp1nv2qb94-oyz0vx2fzb.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\q1265knk41-4cjqfoi9d1.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\ymrfclvpdl-er1at4q9wt.gz
+C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\igfyc8ena0-0b4vc50uib.gz
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\staticwebassets.build.endpoints.json
@@ -1031,6 +1034,3 @@ C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\refint\TasksManager.Client.dll
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\TasksManager.Client.pdb
 C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\ref\TasksManager.Client.dll
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\q1265knk41-ohy6qpvlxa.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\ymrfclvpdl-htmm6url96.gz
-C:\Users\user\Desktop\DotNet_Projects\TasksManager\TasksManager.Client\obj\Debug\net8.0\compressed\igfyc8ena0-forknxxikc.gz

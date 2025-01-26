@@ -1,20 +1,24 @@
 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TasksManager.Models;
 
 namespace TasksManager.Data;
-public class TasksManagerDbContext : DbContext
+public class TasksManagerDbContext : IdentityDbContext<IdentityUser>
 {
     public TasksManagerDbContext(DbContextOptions<TasksManagerDbContext> options) : base(options)
     {
     }
 
-    public DbSet<User> Users { get; set; } = null!;
-    public DbSet<UserTasks> UserTasks { get; set; } = null!;
-    public DbSet<UserDocument> UserDocuments { get; set; } = null!;
+    public DbSet<User> AppUsers { get; set; } = default!;
+    public DbSet<UserTasks> UserTasks { get; set; } = default!;
+    public DbSet<UserDocument> UserDocuments { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+        
         modelBuilder.Entity<User>()
             .HasMany(u => u.UserDocument)
             .WithOne(ud => ud.User)

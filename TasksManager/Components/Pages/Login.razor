@@ -1,14 +1,21 @@
-﻿@* @rendermode RenderMode.InteractiveServer *@
-@page "/login"
+﻿@page "/login"
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.EntityFrameworkCore
+@using System.Security.Claims
 @using TasksManager.Models
 @using TasksManager.DTO
+@using TasksManager.Hasher
+@using TasksManager.Data
+@inject TasksManagerDbContext DbContext
+@inject NavigationManager Navigation
 
 <PageTitle>login</PageTitle>
 
 <div class="w-screen h-screen flex justify-center items-center">
     <div class=" w-[60%] sm:w-[50%] md:w-[40%] lg:w-[28%] rounded-[0.8rem] px-4 py-8 border border-gray-300 font-serif">
-        <h2 class=" text-2xl text-[#5577FF] font-semibold text-center">Login</h2>
-        <EditForm Model="loginDto" action="#" method="post" class="relative flex flex-col gap-3 mt-10">
+        <h2 class=" text-2xl text-[rgb(85,119,255)] font-semibold text-center">Login</h2>
+        <EditForm Model="loginDto"  FormName="Login" method="post" OnInvalidSubmit="Authenticate" class="relative flex flex-col gap-3 mt-10">
             <DataAnnotationsValidator />
             <ValidationSummary class="text-red-500" />
             <div class="flex flex-col gap-2">
@@ -81,8 +88,14 @@
 </div>
 
 @code {
+
+    [CascadingParameter]
+    public HttpContext? context { get; set; }
+
     private LoginDto loginDto = new();
-    private User user = new();
+    @* private User? user = new(); *@
+
+    private string ErrorMessage { get; set; } = "";
     private bool ShowPassword = false;
     private string PasswordType { get; set; } = "password";
 
@@ -97,5 +110,33 @@
         {
             PasswordType = "password";
         }
+    }
+
+    private async Task Authenticate()
+    {
+       User? user = await DbContext.AppUsers.FirstOrDefaultAsync(u => u.Email == loginDto.Email);
+
+
+       if (user is null || !Hasher.VerifyValue(loginDto.Password, user.PasswordHash, user.PasswordSalt) )
+       {
+
+            ErrorMessage = "Invalid email or password";
+            return;
+       }
+
+       var claim = new List<Claim>
+        {
+            new Claim( "Tasks", user.UserTasks.ToString()! ),
+            new Claim( "Documenst", user.UserDocument.ToString()! ),
+            new Claim( "Email", user.Email )
+        };
+
+        var Identity = new ClaimsIdentity(claim, CookieAuthenticationDefaults.AuthenticationScheme); 
+        var principal = new ClaimsPrincipal(Identity);
+
+        await context!.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+        Navigation.NavigateTo("/");
+
+
     }
 }

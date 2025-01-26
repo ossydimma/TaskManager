@@ -12,7 +12,7 @@
 <div class="w-screen h-screen flex justify-center items-center">
     <div class=" w-[60%] sm:w-[50%] md:w-[40%] lg:w-[28%] rounded-[0.8rem] px-4 py-5 border border-gray-300 font-serif">
         <h2 class=" text-2xl text-[#5577FF] font-semibold text-center">Sign up</h2>
-        <EditForm Model="signUpDto" method="post" FormName="SignIn" OnValidSubmit="RegisterUser" class="relative flex flex-col gap-2 mt-5">
+        <EditForm Model="signUpDto" method="post" FormName="SignIn" OnInvalidSubmit="RegisterUser"  class="relative flex flex-col gap-2 mt-5">
             <DataAnnotationsValidator />
             <ValidationSummary class="text-red-500" />
 
@@ -61,7 +61,7 @@
 
         @* external-auth *@
         @* <a href="/signin-google"> *@
-            <div class="border border-gray-300 w-[100%] py-2  rounded-lg flex justify-center items-center gap-7 my-4 cursor-pointer" @onclick="GoogleAuthentication">
+            <div class="border border-gray-300 w-[100%] py-2  rounded-lg flex justify-center items-center gap-7 my-4 cursor-pointer">
 
                 <svg class="w-4" viewBox="-3 0 262 262" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000">
@@ -118,7 +118,7 @@
         User.PasswordSalt = passwordSalt;
 
 
-        DbContext.Users.Add(User);
+        DbContext.AppUsers.Add(User);
         int affect = await DbContext.SaveChangesAsync();
         if (affect > 0)
         {
@@ -129,21 +129,9 @@
             Console.WriteLine("Error");
         }
 
-        @* using var context = DbFactory.CreateDbContext();
-        context.Users.Add(User);
-        int affect = await context.SaveChangesAsync();
-        if (affect > 0)
-        {
-            Navigation.NavigateTo("login");
-        }
-        else
-        {
-            Console.WriteLine("Error");
-        } *@
-
     }
 
-
+@* 
     private async Task GoogleAuthentication()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
@@ -151,7 +139,7 @@
         {
             Navigation.NavigateTo("signin-google");
         }
-    }
+    } *@
 
      private void HandlePasswordType() 
     {

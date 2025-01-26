@@ -1,5 +1,8 @@
 ﻿@* @rendermode RenderMode.InteractiveAuto *@
 @inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager Navigation
 @inject IJSRuntime JSRuntime
 
 <div class="bg-[#dadde2] w-screen h-auto md:h-screen pr-0 md:pr-3 sm:pr-1 flex gap-0 sm:gap-1 md:gap-3">
@@ -26,6 +29,12 @@
 @code {
     private bool IsAuthenticated { get; set; } = true;
     private ElementReference ScrollableDiv;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        IsAuthenticated = authState.User.Identity.IsAuthenticated;
+    }
 
     private async Task ScrollToTop()
     {

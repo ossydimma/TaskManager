@@ -4,12 +4,6 @@ namespace TasksManager.DTO
 {
     public class EditTasksDto
     {
-        // public string? Title { get; set; } 
-        // public string Description { get; set; } = string.Empty;
-        // public string? Category { get; set; }
-        // public DateOnly Deadline { get; set; }
-        // public bool Status { get; set; }
-
         [Required]
         public string? Category { get; set; }
 
