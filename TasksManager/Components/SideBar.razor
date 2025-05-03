@@ -1,7 +1,7 @@
-@* @rendermode RenderMode.InteractiveAuto *@
-@using TasksManager.SharedDataServices
+
 @inject IJSRuntime JSRuntime
-@inject SharedDataServices.SharedDataService SharedData
+@inject ILogger<SideBar> Logger
+
 @implements IDisposable
 
 <div class=" h-[96Vh] sm:my-[2vh] sm:ml-[0.5vh] sm:pt-2 pb-3.5 sm:px-3 md:px-2 ">
@@ -44,7 +44,7 @@
                                     @* Plus Icon *@
                                     <svg class=" w-5 md:w-6 " viewBox="0 0 32 32" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                                        xmlnsSketch="http://www.bohemiancoding.com/sketch/ns">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                         <g id="SVGRepo_iconCarrier">
@@ -106,7 +106,7 @@
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink href="/mytasks">
+                        <NavLink href= "/mytasks">
                             <div
                                 class="flex items-center p-2 @(!SharedData.MaximizeSideBar ? "rounded-full border-2 border-black " : "rounded-lg") gap-2.5 cursor-pointer hover:bg-black hover:text-white fill-black hover:fill-white">
                                 <svg class="w-6 md:w-7 icon" viewBox="0 0 1024 1024" version="1.1"
@@ -167,7 +167,7 @@
 
                 @* footer Nav *@
                 <ul class="mb-3 pt-2 border-t-[3px] border-dashed border-gray-400">
-                    <li>
+                    <li class=" @(!SharedData.MaximizeSideBar ? "mb-4" : "")">
                         <NavLink href="/settings">
                             <div
                                 class="flex items-center p-2 @(!SharedData.MaximizeSideBar ? "rounded-full border-2 border-black pl-[0.6rem]" : "rounded-lg") gap-2.5 cursor-pointer  hover:bg-black hover:text-white stroke-black hover:stroke-white">
@@ -192,6 +192,25 @@
                                 }
                             </div>
                         </NavLink>
+                    </li>
+                    <li @onclick="LogOut">
+                        <div
+                            class="flex items-center p-2 @(!SharedData.MaximizeSideBar ? "rounded-full border-2 border-black hover:border-white pl-[0.6rem]" : "rounded-lg") gap-2.5 cursor-pointer  hover:bg-red-600 hover:text-white stroke-black hover:stroke-white">
+                            <svg class="w-6 md:w-7 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M14 20H6C4.89543 20 4 19.1046 4 18L4 6C4 4.89543 4.89543 4 6 4H14M10 12H21M21 12L18 15M21 12L18 9"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                            </svg>
+                            @if (SharedData.MaximizeSideBar)
+                            {
+                                <p class=" font-medium ">Log Out</p>
+                            }    
+                        </div>
+                       
                     </li>
                 </ul>
             </div>
@@ -315,13 +334,18 @@
     public EventCallback OnScrollToTop { get; set; }
     private bool ShowSideBar { get; set; }
     private DotNetObjectReference<SideBar>? dotNetRef;
-    protected override void OnInitialized()
+
+    private bool IsAuthenticated;
+    
+    protected override async void OnInitialized()
     {
+
         SharedData.OnChange += StateHasChanged;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        
         if (firstRender)
         {
             dotNetRef = DotNetObjectReference.Create(this);
@@ -367,11 +391,19 @@
     }
 
 
-    private async Task HandleCreateTaskDisplay()
+    private void HandleCreateTaskDisplay()
     {
-        SharedData.ShowCreateTask = !SharedData.ShowCreateTask;   
-        await OnScrollToTop.InvokeAsync();
+        SharedData.PreviousvUrl = Navigation.Uri;
 
+        Navigation.NavigateTo("/createtasks");
+
+    }
+
+    private void LogOut()
+    {
+        @* SharedData.ShowCreateTask = true;
+        SharedData.IsLogOut = true; *@
+        @* Navigation.NavigateTo("/Account/Logout"); *@
     }
 
     public void Dispose()

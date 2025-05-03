@@ -1,23 +1,26 @@
 ﻿@page "/login"
-@using Microsoft.AspNetCore.Authentication
+
 @using Microsoft.AspNetCore.Authentication.Cookies
-@using Microsoft.EntityFrameworkCore
+@using System.ComponentModel.DataAnnotations
 @using System.Security.Claims
-@using TasksManager.Models
-@using TasksManager.DTO
 @using TasksManager.Hasher
 @using TasksManager.Data
+
 @inject TasksManagerDbContext DbContext
-@inject NavigationManager Navigation
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
+@inject IHttpContextAccessor HttpContextAccessor
+
 
 <PageTitle>login</PageTitle>
 
 <div class="w-screen h-screen flex justify-center items-center">
     <div class=" w-[60%] sm:w-[50%] md:w-[40%] lg:w-[28%] rounded-[0.8rem] px-4 py-8 border border-gray-300 font-serif">
         <h2 class=" text-2xl text-[rgb(85,119,255)] font-semibold text-center">Login</h2>
-        <EditForm Model="loginDto"  FormName="Login" method="post" OnInvalidSubmit="Authenticate" class="relative flex flex-col gap-3 mt-10">
+        <EditForm Model="loginDto"  FormName="Login" method="post" OnValidSubmit="Authenticate" class="relative flex flex-col gap-3 mt-10">
             <DataAnnotationsValidator />
             <ValidationSummary class="text-red-500" />
+            <p>@ErrorMessage</p>
             <div class="flex flex-col gap-2">
                 <label for="username">Email:</label>
                 <InputText @bind-Value="loginDto.Email" id="username" name="username" class="outline-none border py-1 px-3 rounded-lg" />
@@ -39,8 +42,8 @@
 
             <div class="text-sm mb-1 flex items-center justify-between">
                 <div style="display: flex; gap: 5px">
-                    <input type="checkbox" id="stay-signed-in" name="stay-signed-in" />
-                    <label for="stay-signed-in">Stay Signed In</label>
+                    <InputCheckbox @bind-Value="loginDto.RememberMe" id="RememberMe" name="RememberMe" />
+                    <label for="RememberMe">Remember Me</label>
                 </div>
                 <div>
                     <a href="/forgotPassword" class="text-[#5577FF]">Forgot Password?</a>
@@ -48,8 +51,17 @@
             </div>
 
             <button class="bg-[#5577FF] text-[1rem] text-white py-2 w-[100%] rounded-lg"
-                type="submit">
-                Log In
+                type="submit"> 
+                @if (Loading)
+                {
+                    <div class="flex justify-center items-center h-10">
+                        <div class="animate-spin rounded-full h-4 w-4 border-t-4 border-white border-solid"></div>
+                    </div>
+                }
+                else
+                {
+                    <span>Log In</span>
+                }
             </button>
         </EditForm>
 
@@ -89,8 +101,7 @@
 
 @code {
 
-    [CascadingParameter]
-    public HttpContext? context { get; set; }
+   private HttpContext HttpContext => HttpContextAccessor.HttpContext;
 
     private LoginDto loginDto = new();
     @* private User? user = new(); *@
@@ -98,6 +109,17 @@
     private string ErrorMessage { get; set; } = "";
     private bool ShowPassword = false;
     private string PasswordType { get; set; } = "password";
+    private bool Loading;
+
+    @* protected override async Task OnInitializedAsync()
+    {
+        if (HttpContext != null && HttpMethods.IsGet(HttpContext.Request.Method))
+        {
+            // Clear the existing external cookie to ensure a clean login process
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+        }
+ 
+    } *@
 
     private void HandlePasswordType() 
     {
@@ -114,29 +136,118 @@
 
     private async Task Authenticate()
     {
-       User? user = await DbContext.AppUsers.FirstOrDefaultAsync(u => u.Email == loginDto.Email);
+        Loading = true;
+        ErrorMessage = string.Empty;
 
+        var result = await SignInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, loginDto.RememberMe, lockoutOnFailure: false);
 
-       if (user is null || !Hasher.VerifyValue(loginDto.Password, user.PasswordHash, user.PasswordSalt) )
-       {
-
-            ErrorMessage = "Invalid email or password";
-            return;
-       }
-
-       var claim = new List<Claim>
+        if (result.Succeeded)
         {
-            new Claim( "Tasks", user.UserTasks.ToString()! ),
-            new Claim( "Documenst", user.UserDocument.ToString()! ),
-            new Claim( "Email", user.Email )
-        };
+            Navigation.NavigateTo("/");
+        }
+        else if (result.IsLockedOut)
+        {
+            ErrorMessage = "Your account is locked out.";
+        } 
+        else if (result.IsNotAllowed)
+        {
+            ErrorMessage = "You are not allowed to log in.";
+        }
+        else if (result.RequiresTwoFactor)
+        {
+            ErrorMessage = "Two-factor authentication is required.";
+        }
+        else
+        {
+            ErrorMessage = "Invalid email or password.";
+        }
+        Loading = false;
 
-        var Identity = new ClaimsIdentity(claim, CookieAuthenticationDefaults.AuthenticationScheme); 
-        var principal = new ClaimsPrincipal(Identity);
+        @* try
+        { *@
+            @* var user = await UserManager.FindByEmailAsync(loginDto.Email);
 
-        await context!.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-        Navigation.NavigateTo("/");
+            if (user == null)
+            {
+                ErrorMessage = "Invalid email or password, Not found";
+                Loading = false;
+                return;
+            } *@
 
+            @* var result = await SignInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, isPersistent: false, lockoutOnFailure: false);
+
+            if (result.Succeeded)
+            { *@
+                // Add claims if needed
+                @* var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.UserName!),
+                    new Claim(ClaimTypes.Email, user.Email!),
+                    new Claim("Tasks", user.UserTasks.ToString()!),
+                    new Claim("Documents", user.UserDocument.ToString()!)
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                
+
+                if (!HttpContextAccessor.HttpContext.Response.HasStarted)
+                {
+                    await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                } *@
+
+                @* Navigation.NavigateTo("/");
+            } *@
+            @* else
+            {
+                if (result.IsLockedOut)
+                {
+                    ErrorMessage = "Your account is locked out.";
+                }
+                else if (result.IsNotAllowed)
+                {
+                    ErrorMessage = "You are not allowed to log in.";
+                }
+                else if (result.RequiresTwoFactor)
+                {
+                    ErrorMessage = "Two-factor authentication is required.";
+                }
+                else
+                {
+                    ErrorMessage = "Invalid email or password.";
+                }
+                Loading = false;
+            } *@
+        @* }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+            Loading = false;
+        } *@
+
+
+    }
+
+    private sealed class LoginDto
+    {
+
+        @* [Required]
+        // [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; } = string.Empty;
+        
+        [Required]
+        public string Password { get; set; } = string.Empty; *@
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = "";
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
 
     }
 }

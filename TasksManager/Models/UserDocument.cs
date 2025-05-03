@@ -31,9 +31,9 @@ namespace TasksManager.Models
         }
 
         [ForeignKey("UserId")]
+        public string UserId { get; set; } = string.Empty!;
         public User User { get; set; } = null!;
 
-        public Guid UserId { get; set; }
         
     }
 

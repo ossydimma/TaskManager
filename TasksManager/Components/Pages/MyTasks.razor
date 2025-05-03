@@ -1,8 +1,11 @@
 @page "/mytasks"
+
+@attribute [Authorize]
+
 @using Microsoft.AspNetCore.Components.QuickGrid 
-@using TasksManager.Models
 @using TasksManager.DTO
-@inject SharedDataServices.SharedDataService SharedData
+
+
 @implements IDisposable
 
 <main class="text-xs xs:text-sm md:text-[1rem] border-gray-500 border-t-2 border-dotted"> 
@@ -122,6 +125,7 @@
 
                 <h1 class="font-bold font-serif text-3xl text-center "> @(Option is "Edit" ? "Edit Task" : Option is "Details" ? "Task Details" : "Delete Task" )</h1>
             </div>
+
             <div class="h-[85%] overflow-y-scroll overflow-x-hidden pb-6 ">
                 @if (SelectedTask is null)
                 {
@@ -183,12 +187,12 @@
                             >
                                 <DataAnnotationsValidator />
                                 <ValidationSummary role="alert" class="text-red-500" />
-                                <divF class="flex flex-col">
+                                <div class="flex flex-col">
                                     <label for="title" class="text-lg font-medium">Project Title</label>
                                     <InputText id="title" @bind-Value="editTasksDto.Title" placeholder="Enter Project Title"
                                         class="border border-gray-600 rounded-lg outline-none py-2 px-4  w-[100%]"/>
                                     <ValidationMessage class="text-red-500" For="() => editTasksDto.Title" />
-                                </divF>
+                                </div>
 
                                 <div class="flex justify-between items-center">
                                     <div class="flex flex-col @(SelectedTask.Status == true ? "w-[100%]" : "w-[45%]") ">
@@ -272,7 +276,9 @@
 
     private void HandleCreateTaskDisplay()
     {
-        SharedData.ShowCreateTask = !SharedData.ShowCreateTask;
+        SharedData.PreviousvUrl = Navigation.Uri;
+
+        Navigation.NavigateTo("/createtasks");
 
     }
 

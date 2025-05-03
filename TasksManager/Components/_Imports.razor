@@ -9,3 +9,16 @@
 @using TasksManager
 @using TasksManager.Client
 @using TasksManager.Components
+@using TasksManager.Components.Pages
+@using TasksManager.Models
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@using TasksManager.SharedDataServices
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject SharedDataService SharedData
+@inject NavigationManager Navigation
+

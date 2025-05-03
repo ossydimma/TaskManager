@@ -3,52 +3,37 @@ using TasksManager.SharedDataServices;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using TasksManager.Data;
+using TasksManager.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Net.Http;
+using System.Security.AccessControl;
+using TasksManager.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var connectionString = builder.Configuration.GetConnectionString("default") 
-    ?? throw new NullReferenceException("Connection string 'default' not found in configuration");
-
-builder.Services.AddDbContext<TasksManagerDbContext>(options =>
-{
-    options.UseSqlServer("Data Source=DESKTOP-DRLUK05\\SQLEXPRESS;Initial Catalog=TaskHubDB;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
-});
-
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TasksManagerDbContext>();
-
-// builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-//     .AddEntityFrameworkStores<TasksManagerDbContext>()
-//     .AddDefaultTokenProviders();
-
-
-builder.Services.AddSingleton<SharedDataService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
-    
-builder.Services.AddServerSideBlazor()
-    .AddCircuitOptions(options => options.DetailedErrors = true);
 
-// Add Authentication services
+builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddQuickGridEntityFrameworkAdapter();
+
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+    options.DefaultScheme = IdentityConstants.ApplicationScheme; // For cookie authentication
+    options.DefaultSignInScheme = IdentityConstants.ExternalScheme; // For external sign-in
 })
-.AddCookie( options => 
-{
-    // options.LoginPath = "/account/login";
-    // options.AccessDeniedPath = "/Account/AccessDenied";
-    // options.Cookie.Name = "auth_cookie";
-    // options.LoginPath = "/login";
-    // options.Cookie.MaxAge = TimeSpan.FromDays(30);
-    // options.AccessDeniedPath = "/accessdenied";
-})
+.AddCookie(IdentityConstants.ApplicationScheme)
+.AddCookie(IdentityConstants.ExternalScheme)
+// .AddCookie( options => 
+// {
+//     options.Cookie.Name = "auth_cookie";
+//     options.LoginPath = "/login";
+//     // options.Cookie.MaxAge = TimeSpan.FromDays(30);
+// })
 .AddGoogle(options => 
 {
     options.ClientId =  builder.Configuration["Authentication:Google:ClientId"]!;
@@ -57,16 +42,64 @@ builder.Services.AddAuthentication(options =>
     options.Scope.Add("profile");
 });
 
-// builder.Services.AddCascadingAuthenticationState();
+var connectionString = builder.Configuration.GetConnectionString("default") 
+    ?? throw new NullReferenceException("Connection string 'default' not found in configuration");
+
+builder.Services.AddDbContext<TasksManagerDbContext>(options =>
+{
+    options.UseSqlServer("Data Source=DESKTOP-DRLUK05\\SQLEXPRESS;Initial Catalog=TaskManagerDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+});
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddIdentityCore<User>(options => 
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedEmail = false;
+})
+    .AddEntityFrameworkStores<TasksManagerDbContext>()
+    .AddSignInManager()
+    .AddDefaultTokenProviders();
+
+// builder.Services.AddDefaultIdentity<User>(options => 
+// {
+//     options.SignIn.RequireConfirmedAccount = false; // Disable email confirmation for sign-in
+//     options.SignIn.RequireConfirmedEmail = false;
+//     options.Password.RequireDigit = false; // Set to true if you want to require digits
+//     options.Password.RequireLowercase = false; // Set to true if you want to require lowercase letters
+//     options.Password.RequireUppercase = false; // Set to true if you want to require uppercase letters
+//     options.Password.RequireNonAlphanumeric = false; // Set to true if you want to require non-alphanumeric characters
+//     options.Password.RequiredLength = 0; // Set the minimum length as needed
+//     options.Password.RequiredUniqueChars = 0;
+// } )
+//     .AddEntityFrameworkStores<TasksManagerDbContext>()
+//     .AddSignInManager();
+
+
+builder.Services.AddSingleton<SharedDataService>();
+builder.Services.AddScoped<AuthenticationStateProvider, AuthenticationProvider>();
+
+
     
-    
-builder.Services.AddQuickGridEntityFrameworkAdapter();
+builder.Services.AddServerSideBlazor()
+    .AddCircuitOptions(options => options.DetailedErrors = true);
+
+
+
+
+// Register HttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+
+// Register SignInManager
+// builder.Services.AddScoped<SignInManager<User>>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.UseMigrationsEndPoint();
 }
 else
 {
@@ -83,44 +116,13 @@ app.UseAntiforgery();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.Use(async (context, next) =>
-{
-    // Allow access to the login page without authentication
-    if (!context.User.Identity.IsAuthenticated && 
-        (context.Request.Path.StartsWithSegments("/login") || 
-         context.Request.Path.StartsWithSegments("/signup")))
-    {
-        await next(); // Proceed to the next middleware (the login page)
-        return;
-    }
-
-    // For all other paths, check if the user is authenticated
-    if (!context.User.Identity.IsAuthenticated)
-    {
-        context.Response.Redirect("/login"); // Redirect to login
-        return; // Stop further processing
-    }
-
-    await next(); // Proceed to the next middleware
-});
-
-// app.Use(async (context, next) =>
-// {
-
-//     if (!context.User.Identity.IsAuthenticated)
-//     {
-//         context.Response.Redirect("/login");
-//         return;
-//     }
-//     await next();
-    
-// });
-
-// app.MapFallbackToPage("/Account/Register", "/Account/Register");
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(TasksManager.Client._Imports).Assembly);
+
+// Add additional endpoints required by the Identity /Account Razor components.
+// app.MapAdditionalIdentityEndpoints();
 
 app.Run();

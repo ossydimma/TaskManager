@@ -1,22 +1,21 @@
 ﻿@* @rendermode RenderMode.InteractiveAuto *@
 @inherits LayoutComponentBase
-@using Microsoft.AspNetCore.Components.Authorization
-@inject AuthenticationStateProvider AuthenticationStateProvider
+
 @inject NavigationManager Navigation
 @inject IJSRuntime JSRuntime
 
 <div class="bg-[#dadde2] w-screen h-auto md:h-screen pr-0 md:pr-3 sm:pr-1 flex gap-0 sm:gap-1 md:gap-3">
-    @if(IsAuthenticated)
+    @if(ShowComponents)
     {
         <SideBar OnScrollToTop="ScrollToTop" />
     }
-    <div class="relative bg-[#f6f5f5] h-[98Vh] @(!IsAuthenticated ?  "ml-2.5" : "") overflow-x-hidden overflow-y-scroll md:overflow-hidden my-0 sm:my-[1vh]  w-screen sm:rounded-[2rem] opacity-" @ref="ScrollableDiv" >
-        @if(IsAuthenticated)
+    <div class="relative bg-[#f6f5f5] h-[98Vh] @(!ShowComponents ?  "ml-2.5" : "") overflow-x-hidden overflow-y-scroll md:overflow-hidden my-0 sm:my-[1vh]  w-screen sm:rounded-[2rem] opacity-" @ref="ScrollableDiv" >
+        @if(ShowComponents && IsAuthenticated)
         {
             <Header />
         }
-         @Body    
-        <CreateTask />
+         @Body 
+
     </div>
 </div>
 
@@ -27,8 +26,17 @@
 </div>
 
 @code {
-    private bool IsAuthenticated { get; set; } = true;
+
+    private bool IsAuthenticated;
+    private bool ShowComponents => !Navigation.Uri.Contains("/login") && !Navigation.Uri.Contains("/signup") && !Navigation.Uri.Contains("/createtasks");
     private ElementReference ScrollableDiv;
+
+    
+
+    private void HandleLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
 
     protected override async Task OnInitializedAsync()
     {

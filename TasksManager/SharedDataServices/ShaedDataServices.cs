@@ -4,20 +4,20 @@ namespace TasksManager.SharedDataServices
 {
     public class SharedDataService
     {
-        private bool _showCreateTask;
         public bool MaximizeSideBar { get; set; } = true;
-        public bool ShowCreateTask
+
+        private string? _previousUrl;
+
+        public string PreviousvUrl
         {
-            get => _showCreateTask;
+            get => _previousUrl!;
             set
             {
-                if (_showCreateTask != value)
-                {
-                    _showCreateTask = value;
-                    NotifyStateChanged();
-                }
+                _previousUrl = value;
+                NotifyStateChanged();
             }
         }
+        public bool IsLogOut { get; set; } = false;
 
         public event Action? OnChange;
         public void NotifyStateChanged() => OnChange?.Invoke();

@@ -1,0 +1,23 @@
+@page "/logout"
+@using Microsoft.AspNetCore.Authentication
+@inject NavigationManager Navigation
+
+<p>You have successfully logged out of the application</p>
+
+@code {
+    [CascadingParameter]
+    public HttpContext? context { get; set; }
+
+    @* protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        if (context.User.Identity.IsAuthenticated)
+        {
+            await context.SignOutAsync();
+            Navigation.NavigateTo("login");
+
+        }
+
+    } *@
+
+}

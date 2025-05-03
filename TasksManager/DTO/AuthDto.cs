@@ -7,7 +7,7 @@ namespace TasksManager.DTO
     {
 
         [Required]
-        [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Invalid Email Address")]
+        // [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; } = string.Empty;
         
         [Required]

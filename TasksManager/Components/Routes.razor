@@ -1,16 +1,46 @@
-﻿ @rendermode RenderMode.InteractiveServer 
+﻿
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@using TasksManager
 
-<Router AppAssembly="@typeof(Program).Assembly" >
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+ @rendermode RenderMode.InteractiveServer 
 
-    </Found>
-    <NotFound>
-        <LayoutView Layout="@typeof(Layout.MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
+ <CascadingAuthenticationState>
 
+    <Router AppAssembly="@typeof(Program).Assembly" >
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" >
+                <NotAuthorized>
+                    @if (!context.User.Identity.IsAuthenticated)
+                    {
+                        <p class="flex justify-center items-center mt-[20%]">You're not authorized <a href="/login" class="text-blue-500 underline mx-1">login</a> to access this resource. </p>
+                    }
+                    else
+                    {
+                        <p>You are not authorized to access this resource.</p>
+                    }
+                </NotAuthorized>
+                <Authorizing>
+                    <p>Authorizing...</p>
+                </Authorizing>
+            </AuthorizeRouteView>
+
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(Layout.MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+
+@code {
+    private AuthenticationState context;
+
+    protected override async Task OnInitializedAsync()
+    {
+        context = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    }
+}
 
 

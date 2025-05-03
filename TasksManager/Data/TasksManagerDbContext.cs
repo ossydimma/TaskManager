@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using TasksManager.Models;
 
 namespace TasksManager.Data;
-public class TasksManagerDbContext : IdentityDbContext<IdentityUser>
+public class TasksManagerDbContext : IdentityDbContext<User>
 {
     public TasksManagerDbContext(DbContextOptions<TasksManagerDbContext> options) : base(options)
     {
     }
 
-    public DbSet<User> AppUsers { get; set; } = default!;
     public DbSet<UserTasks> UserTasks { get; set; } = default!;
     public DbSet<UserDocument> UserDocuments { get; set; } = default!;
 

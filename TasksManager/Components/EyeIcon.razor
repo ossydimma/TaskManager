@@ -1,3 +1,6 @@
+
+@rendermode RenderMode.InteractiveServer
+
 <div class=" cursor-pointer" @onclick="HandlePasswordType">
     @if (!ShowPassword)
     {
@@ -32,7 +35,7 @@
 
 @code {
     [Parameter]
-    public bool ShowPassword {get; set;}
+    public bool ShowPassword {get; set;} = true;
     [Parameter]
     public string IconStyles { get; set;} = string.Empty;
     [Parameter]

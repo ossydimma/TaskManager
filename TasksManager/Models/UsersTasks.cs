@@ -23,7 +23,7 @@ public class UserTasks
     public string TruncatedDescription => Description.Length > 100 ? Description.Substring(0, 100) + "..." : Description;
 
     [ForeignKey("UserId")]
+    public string UserId { get; set; } = string.Empty;
     public User User { get; set; } = null!;
 
-    public Guid UserId { get; set; }
 }
